@@ -7,14 +7,17 @@ const config: {
 			borderRadius: { md: string; sm: string; lg: string };
 			colors: {
 				border: string;
+				textprimary: string;
 				ring: string;
 				popover: { foreground: string; DEFAULT: string };
-				foreground: string;
-				accent: { foreground: string; DEFAULT: string };
+				danger: string;
+				accent: string;
+				bgdark: string;
 				destructive: { foreground: string; DEFAULT: string };
-				secondary: { "100": string; "200": string };
+				secondary: string;
 				input: string;
-				background: string;
+				warning: string;
+				yellowlish: string;
 				muted: { foreground: string; DEFAULT: string };
 				chart: { "1": string; "2": string; "3": string; "4": string; "5": string };
 				card: { foreground: string; DEFAULT: string };
@@ -22,10 +25,8 @@ const config: {
 			}
 		}
 	};
-	darkMode: string[];
 	content: string[]
 } = {
-	darkMode: ["class"],
 	content: [
 		"./pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -35,12 +36,13 @@ const config: {
 		extend: {
 			colors: {
 				primary: '#0BBB8A',
-				secondary: {
-					'100': '#E2E2D5',
-					'200': '#888883',
-				},
-				background: 'hsl(var(--background))',
-				foreground: 'hsl(var(--foreground))',
+				secondary: '#FFA500',
+				accent: '#F88787',
+				danger: '#D43B3B',
+				warning: '#F5C449',
+				bgdark: '#02042C',
+				textprimary: '#034B72',
+				yellowlish: '#FFD300',
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))',
@@ -52,10 +54,6 @@ const config: {
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
 					foreground: 'hsl(var(--muted-foreground))',
-				},
-				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))',
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
