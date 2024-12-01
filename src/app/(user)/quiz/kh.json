@@ -1,0 +1,26 @@
+{
+    "introKh": {
+      "title": "តេស្តស្វែងរក",
+      "highlight": "អាជីពការងារ",
+      "description": "ការជ្រើសរើសអាជីពការងារត្រឹមត្រូវអាចជាបញ្ហាប្រឈមប៉ុន្តែការយល់ដឹងពីខ្លួនអ្នកគឺជាជំហានដំបូងឆ្ពោះទៅរកការស្វែងរកអាជីពដែលសាកសមនឹងអ្នក។ កម្រងសំណួរនេះត្រូវបានរចនាឡើងដើម្បីជួយអ្នកស្វែងយល់ពីភាពខ្លាំងខ្សោយ ចំណាប់អារម្មណ៍ របៀបនៃការសិក្សា គុណតម្លៃនិងបុគ្គលិកលក្ខណៈ​របស់អ្នក រួចផ្តល់ជាយោបល់លើអាជីពការងារនិងជំនាញដែលត្រូវសិក្សាដែលអ្នកគួរពិចារណា។"
+    },
+
+    "instructKh": {
+      "instructionLabel": "ការណែនាំ",
+      "howItWorksTitle": "របៀបក្នុងការធ្វើតេស្ត",
+      "howItWorksSteps": [
+        "ការ​ធ្វើតេស្តមានភាព​ងាយ​ស្រួល​និងឆាប់​រហ័ស",
+        "ចុចលើរូបតំណាងសម្រាប់បង្ហាញពីកម្រិតនៃការយល់ស្របទៅលើសំណួរនីមួយៗរបស់អ្នកដោយភាពស្មោះត្រង់ និងយកចិត្តទុកដាក់។"
+      ],
+      "representedImageTitle": "រូបតំណាង",
+      "emojiLabels": ["មិនឯកភាពទាំងស្រុង", "មិនឯកភាព", "ឯកភាពខ្លះមិនឯកភាពខ្លះ", "ឯកភាព", "ឯកភាពទាំងស្រុង"]
+    },
+
+    "ResultintroKh": {
+      "title": "Personality",
+      "highlight": "Test",
+      "description": "Based on this type of test, you will get the results of your personality type through the MBTI (Myers-Briggs Type Indicator) developed by Carl Jung and guidance on which career path to choose."
+    }
+    
+        
+}

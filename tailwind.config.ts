@@ -21,7 +21,9 @@ const config: {
 				muted: { foreground: string; DEFAULT: string };
 				chart: { "1": string; "2": string; "3": string; "4": string; "5": string };
 				card: { foreground: string; DEFAULT: string };
-				primary: string
+				primary: string,
+				bglight: string,
+				bgPrimaryLight: string
 			}
 		}
 	};
@@ -36,6 +38,8 @@ const config: {
 	theme: {
 		extend: {
 			colors: {
+				bgPrimaryLight: '#F7FDFB',
+				bglight: '#F9FAFE',
 				primary: '#0BBB8A',
 				secondary: '#FFA500',
 				accent: '#F88787',
