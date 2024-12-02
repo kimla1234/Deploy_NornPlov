@@ -1,0 +1,37 @@
+{
+    "introEn": {
+      "title": "Career",
+      "highlight": " Test",
+      "description": "Choosing the right career path can be challenging, but understanding yourself is the first step towards finding the right career for you.This questionnaire is designed to help you identify your strengths, weaknesses, interests, learning Style, values, and personality, and give you suggestions on careers, skills, and skills that you should consider."
+    },
+
+    "instructEn": {
+      "instructionLabel": "Instruction",
+      "howItWorksTitle": "How it works",
+      "howItWorksSteps": [
+        "Taking the quiz is quick and easy.",
+        "Choose the emoji that best represents your level of agreement for each question, responding with honesty and attention."
+      ],
+      "representedImageTitle": "Represented Image",
+      "emojiLabels": ["Very Disagree", "Disagree", "Neutral", "Agree", "Very Agree"]
+    },
+
+    "typeOfQuizEn": {
+      "title": "Select a quiz that interests you",
+      "description": "Depending on the type of test you choose, you will get results on career and major guidance that you should choose and get to know yourself better."
+    },
+
+    "personalityResultintroEn": {
+      "title": "Personality",
+      "highlight": " Test",
+      "description": "Based on this type of test, you will get the results of your personality type through the MBTI (Myers-Briggs Type Indicator) developed by Carl Jung and guidance on which career path to choose."
+    },
+
+    "personalityMainEn": {
+      "title": "Test based on personality assessment",
+      "desc": "Understand your personality type through MBTI (Myers-Briggs Type Indicator) Developed by Carl Jung",
+      "buttonText": "Start Quiz"
+    }
+    
+        
+}
