@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${suwannaphum} ${inter} antialiased`}>
         {/* Navbar */}
-        {/* <NavbarPage /> */}
+        <NavbarPage /> 
         {/* Main content */}
         <main className="mx-auto ">{children}</main>
         {/* Footer */}
