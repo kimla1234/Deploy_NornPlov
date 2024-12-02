@@ -1,7 +1,7 @@
 import QuizHeader from '@/src/components/QuizComponent/QuizHeader'
 import { QuizIntroContainer } from '@/src/components/QuizComponent/QuizIntroContainer'
 import React from 'react'
-import enQuiz from '@/src/app/(user)/quiz/en.json'
+import enQuiz from '@/src/app/(user)/json/en.json'
 import { QuizOptContainer } from '@/src/components/QuizComponent/QuizOptContainer'
 import interest from '@/public/Quiz/optQuiz/Interest.png'
 
