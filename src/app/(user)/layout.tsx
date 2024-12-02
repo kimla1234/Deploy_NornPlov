@@ -1,4 +1,5 @@
 // src/app/public_user/layout.tsx
+import "@/src/app/globals.css";
 export default function UserLayout({
     children,
   }: {
