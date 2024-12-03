@@ -1,5 +1,19 @@
 import tailwindcssAnimate from "tailwindcss-animate";
 
+interface KeyframeDefinition {
+	from: { [key: string]: string };
+	to: { [key: string]: string };
+}
+
+type Keyframes = {
+	[key: string]: KeyframeDefinition;
+};
+
+type Animation = {
+	[key: string]: string;
+};
+
+
 const config: {
 	plugins: { handler: () => void }[];
 	theme: {
@@ -24,17 +38,21 @@ const config: {
 				primary: string,
 				bglight: string,
 				bgPrimaryLight: string
-			}
+			};
+			keyframes: Keyframes;
+			animation: Animation;
+			darkMode: string[];
 		}
 	};
 	content: string[]
 } = {
+	darkMode: ["class"],
 	content: [
 		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
 		"./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
-	  ],
+	],
 	theme: {
 		extend: {
 			colors: {
@@ -50,19 +68,19 @@ const config: {
 				yellowlish: '#FFD300',
 				card: {
 					DEFAULT: 'hsl(var(--card))',
-					foreground: 'hsl(var(--card-foreground))',
+					foreground: 'hsl(var(--card-foreground))'
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
-					foreground: 'hsl(var(--popover-foreground))',
+					foreground: 'hsl(var(--popover-foreground))'
 				},
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))',
+					foreground: 'hsl(var(--muted-foreground))'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
-					foreground: 'hsl(var(--destructive-foreground))',
+					foreground: 'hsl(var(--destructive-foreground))'
 				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -72,15 +90,37 @@ const config: {
 					'2': 'hsl(var(--chart-2))',
 					'3': 'hsl(var(--chart-3))',
 					'4': 'hsl(var(--chart-4))',
-					'5': 'hsl(var(--chart-5))',
-				},
+					'5': 'hsl(var(--chart-5))'
+				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)',
+				sm: 'calc(var(--radius) - 4px)'
 			},
-		},
+			keyframes: {
+				'accordion-down': {
+					from: {
+						height: '0'
+					},
+					to: {
+						height: 'var(--radix-accordion-content-height)'
+					}
+				},
+				'accordion-up': {
+					from: {
+						height: 'var(--radix-accordion-content-height)'
+					},
+					to: {
+						height: '0'
+					}
+				}
+			},
+			animation: {
+				'accordion-down': 'accordion-down 0.2s ease-out',
+				'accordion-up': 'accordion-up 0.2s ease-out'
+			}
+		}
 	},
 	plugins: [tailwindcssAnimate],
 };

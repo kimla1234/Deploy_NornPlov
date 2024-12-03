@@ -9,10 +9,17 @@ import upIcon from '@/public/Quiz/skill-icon/up.png'
 import xIcon from '@/public/Quiz/skill-icon/x.png'
 import QuizHeader from '@/src/components/QuizComponent/QuizHeader'
 import { Feedback } from '@/src/components/General/Feedback'
+import { QuizLinkAndChatContainer } from '@/src/components/QuizComponent/QuizLinkAndChatContainer'
+import { QuizInterestResultCard } from '@/src/components/QuizComponent/QuizInterestResultCard'
+import creativityImage from '@/public/Quiz/interest/creativity.png'
+import enterprising from '@/public/Quiz/interest/enterprising.png'
+import { QuizOptHorizontalContainer } from '@/src/components/QuizComponent/QuizOptHorizontalContainer'
+import { RecommendationCard } from '@/src/components/QuizComponent/RecommendationCard'
+import { QuizLearningStyleResultCard } from '@/src/components/QuizComponent/QuizLearningStyleResultCard'
 
 export default function Skill() {
 
-  const { personalityResultintroEn } = enQuiz
+  const { personalityResultintroEn, RecommendationEn } = enQuiz
 
   return (
     <div className='w-full bg-bgPrimaryLight'>
@@ -83,8 +90,58 @@ export default function Skill() {
       </div>
 
 
+      <QuizLinkAndChatContainer chatTitle='សន្ទនាជាមួយ AI' chatDesc='ស្វែងយល់បន្ថែមពីលទ្ធផលរបស់អ្នក' chatButton='សន្ទនាឥឡូវនេះ' linkTitle='ចែករំលែកលទ្ធផលតេស្តរបស់អ្នក' linkDesc='អនុញ្ញាតឱ្យគ្រួសារនិងមិត្តភក្តិរបស់អ្នកអាចមើលឃើញពីលទ្ធផលរបស់អ្នកដោយការចែករំលែកតំណភ្ជាប់នេះ' linkValue='http://example.com/link/to/document' />
+
+
       {/* Feedback section */}
-      <Feedback title='មតិកែលម្អអ្នក, ជាការរីកចម្រើនយើង' desc='អរគុណសម្រាប់ការចូលរួមធ្វើតេស្តជាមួយនាំផ្លូវ សូមចែករំលែកគំនិតរបស់អ្នកលើលទ្ធផលសំណួរ និងអ្វីដែលយើងអាចកែលម្អបាន។' highlight='ពួកយើងរីករាយនឹងការផ្តល់មតិរបស់អ្នក' buttonTitle='ផ្ញើ' placeholder='សំណូមពរណាមួយសម្រាប់ការកែលម្អ'/>
+      <Feedback title='មតិកែលម្អអ្នក, ជាការរីកចម្រើនយើង' desc='អរគុណសម្រាប់ការចូលរួមធ្វើតេស្តជាមួយនាំផ្លូវ សូមចែករំលែកគំនិតរបស់អ្នកលើលទ្ធផលសំណួរ និងអ្វីដែលយើងអាចកែលម្អបាន។' highlight='ពួកយើងរីករាយនឹងការផ្តល់មតិរបស់អ្នក' buttonTitle='ផ្ញើ' placeholder='សំណូមពរណាមួយសម្រាប់ការកែលម្អ' />
+
+
+
+      {/* Interest card section */}
+      <div className='space-y-4 lg:space-y-8 max-w-7xl mx-auto px-4'>
+        <QuizHeader title="បុគ្គលដែលមានចំណាប់អារម្មណ៍លើផ្នែកនេះមានទំនោរទៅខាង" description="Individuals with an interest in this area tend to be" size='sm' type='result' />
+
+        <div className='flex flex-wrap gap-4 justify-center'>
+          <QuizInterestResultCard title='Artistic' desc='Creative and expressive individuals who enjoy working in artistic fields.' image={creativityImage} />
+
+          <QuizInterestResultCard title='Artistic' desc='Creative and expressive individuals who enjoy working in artistic fields.' image={enterprising} />
+        </div>
+
+
+      </div>
+
+      {/* learning style technique card section */}
+      <div className='space-y-4 lg:space-y-8 max-w-7xl mx-auto px-4'>
+        <QuizHeader title="បុគ្គលដែលមានចំណាប់អារម្មណ៍លើផ្នែកនេះមានទំនោរទៅខាង" description="Individuals with an interest in this area tend to be" size='sm' type='result' />
+
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
+          <QuizOptHorizontalContainer title='Feynman Technique' desc=' Explain concepts out loud as if teaching someone else.' image={creativityImage} type='learninigStyle' badgeText='Understanding Complex Concepts' />
+          <QuizOptHorizontalContainer title='Feynman Technique' desc=' Explain concepts out loud as if teaching someone else.' image={creativityImage} type='learninigStyle' badgeText='Understanding Complex Concepts' />
+        </div>
+
+      </div>
+
+      <div className='space-y-4 lg:space-y-8 max-w-7xl mx-auto px-4'>
+
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
+          <RecommendationCard jobTitle={RecommendationEn.jobTitle} jobDesc={RecommendationEn.jobdesc} majors={RecommendationEn.majors} unis={RecommendationEn.unis} />
+          <RecommendationCard jobTitle={RecommendationEn.jobTitle} jobDesc={RecommendationEn.jobdesc} majors={RecommendationEn.majors} unis={RecommendationEn.unis} />
+        </div>
+
+      </div>
+
+      <div className='space-y-4 lg:space-y-8 max-w-7xl mx-auto px-4 my-4'>
+
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
+          <QuizLearningStyleResultCard title='Auditory Learning' desc='Learners who process and retain information best through hearing and verbal communication. Learners who process and retain information best through hearing and verbal communication.' label={1} />
+          <QuizLearningStyleResultCard title='Auditory Learning' desc='Learners who process and retain information best through hearing and verbal communication.' label={2}/>
+          <QuizLearningStyleResultCard title='Auditory Learning' desc='Learners who process and retain information best through hearing and verbal communication.' label={3}/>
+          <QuizLearningStyleResultCard title='Auditory Learning' desc='Learners who process and retain information best through hearing and verbal communication.' label={2}/>
+        </div>
+
+      </div>
+
 
     </div>
 

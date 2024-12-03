@@ -25,7 +25,7 @@ const QuizHeader = ({ title, highlight, description, size, type = 'quiz' , title
         </h1>
         <p  className={`
           ${type === 'result' ? 'text-textprimary' : 'text-white' 
-        } ${size === 'md' ? 'text-xl md:text-2xl' : 'text-md md:text-xl'}`} >{description}</p>
+        } ${size === 'md' ? 'text-xl md:text-2xl' : 'text-based md:text-xl'}`} >{description}</p>
     </div>
   )
 }

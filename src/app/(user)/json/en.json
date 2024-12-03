@@ -31,6 +31,22 @@
       "title": "Test based on personality assessment",
       "desc": "Understand your personality type through MBTI (Myers-Briggs Type Indicator) Developed by Carl Jung",
       "buttonText": "Start Quiz"
+    },
+
+    "RecommendationEn": {
+      "jobTitle": "Teacher / Trainer",
+      "jobdesc": "A Teacher/Trainer educates and inspires learners by delivering engaging lessons or training sessions tailored to their needs. They create structured plans, assess progress, and provide feedback to ensure effective skill and ...",
+      "majors": [
+        "Computer Science",
+        "Software Engineering",
+        "Information Technology"
+      ],
+      "unis": [
+        "Institute of science and technology advanced development",
+        "ITC",
+        "CADT"
+      ]
+      
     }
     
         

@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { Textarea } from "@/components/ui/textarea"
+import { Textarea } from "@/src/components/ui/textarea"
 import { QuizButton } from '../QuizComponent/QuizButton';
 
 type props = {
@@ -33,7 +33,7 @@ export const Feedback = ({ title, desc, highlight, buttonTitle , placeholder}: p
                 <div className="col-span-1 lg:col-span-7 lg:pt-10">
                     <div>
                         <p className="text-md lg:text-xl text-primary mb-1 lg:mb-4">{highlight}</p>
-                        <h2 className=" text-2xl lg:text-5xl font-bold mb-2 lg:mb-6 text-textprimary ">{title}</h2>
+                        <h2 className=" text-2xl lg:text-4xl font-bold mb-2 lg:mb-5 text-textprimary ">{title}</h2>
                         <p className="text-[14px] lg:text-lg text-gray-500 mb-4">
                             {desc}
                         </p>

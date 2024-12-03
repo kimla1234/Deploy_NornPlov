@@ -3,7 +3,7 @@ import QuizHeader from '@/src/components/QuizComponent/QuizHeader'
 import { QuizIntroContainer } from '@/src/components/QuizComponent/QuizIntroContainer'
 import React, { useState } from 'react'
 import enQuiz from '@/src/app/(user)/json/en.json'
-import { QuizOptContainer } from '@/src/components/QuizComponent/QuizOptContainer'
+import { QuizOptHorizontalContainer } from '@/src/components/QuizComponent/QuizOptHorizontalContainer'
 import interest from '@/public/Quiz/optQuiz/Interest.png'
 import { Progress } from "@/src/components/ui/progress"
 import { QuizQuestionContainer } from '@/src/components/QuizComponent/QuizQuestionContainer'
