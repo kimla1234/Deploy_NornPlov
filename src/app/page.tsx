@@ -36,8 +36,8 @@ export default function Home() {
       {/* Feature */}
       <section className=" max-w-7xl flex justify-center mx-auto my-4 md:my-6">
         <div className="container mx-auto px-4 py-12 ">
-          <h1 className="text-3xl font-bold text-center mb-12 text-blue-900">
-            តើ<span className=" text-emerald-500">សកលវិទ្យាល័យ</span>
+          <h1 className="text-3xl font-bold text-center mb-12 text-textprimary">
+            តើ<span className=" text-emerald-500">នាំផ្លូវ</span>
             សម្រាប់អ្នកណា?
           </h1>
 
