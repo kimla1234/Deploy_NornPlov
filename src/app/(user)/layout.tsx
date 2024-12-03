@@ -3,6 +3,8 @@ import "@/src/app/globals.css";
 import type { Metadata } from "next";
 import "../globals.css";
 import { Inter, Suwannaphum } from "next/font/google";
+import NavbarPage from "@/src/components/Navbar/NavbarPage";
+import FooterPage from "@/src/components/Footer/FooterPage";
 const suwannaphum = Suwannaphum({
   subsets: ["khmer"],
   weight: ["400", "700"],
@@ -25,7 +27,9 @@ export default function UserLayout({
     return (
       <html lang="en">
       <body className={`${suwannaphum} ${inter} antialiased`}>
+        <NavbarPage/>
         <main> {children}</main>
+        <FooterPage/>
       </body>
     </html>
     );

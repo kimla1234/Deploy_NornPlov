@@ -3,6 +3,8 @@ import "../globals.css";
 import { Inter, Suwannaphum } from "next/font/google";
 import SessionWrapper from "../SessionProvider";
 import StoreProvider from "../StoreProvider";
+import FooterPage from "@/src/components/Footer/FooterPage";
+
 const suwannaphum = Suwannaphum({
   subsets: ["khmer"],
   weight: ["400", "700"],
@@ -31,6 +33,7 @@ return (
         {/* Main content */}
         <main> {children}</main>
         </StoreProvider>
+        <FooterPage/>
       </body>
     </SessionWrapper>
     </html>
