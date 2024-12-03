@@ -4,7 +4,9 @@ const nextConfig = {
         locales: ['en', 'km'],
         defaultLocale: 'km',
         localeDetection: false,
-    }
+    },
+
+
 };
 
 export default nextConfig;

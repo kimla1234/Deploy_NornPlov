@@ -6,7 +6,7 @@ type ErrorProps ={
   component: string | React.ComponentType<any>; // Type of HTML element or custom component to render
 }
 
-function Error({ name, component }: ErrorProps) {
+function ErrorDynamic({ name, component }: ErrorProps) {
   return (
     <FormikErrorMessage
       name={name}
@@ -16,4 +16,4 @@ function Error({ name, component }: ErrorProps) {
   );
 }
 
-export default Error;
+export default ErrorDynamic;

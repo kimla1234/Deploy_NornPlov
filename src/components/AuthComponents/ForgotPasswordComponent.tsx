@@ -5,7 +5,7 @@ import { Formik, Form } from 'formik';
 import { IoCloseSharp } from 'react-icons/io5';
 import Label from './LabelComponent';
 import DynamicField from './AuthField';
-import Error from './ErrorComponent';
+import ErrorDynamic from './ErrorComponent';
 import PasswordField from './PasswordField';
 import Link from 'next/link';
 import Button from './ButtonComponentForAuth'; // Adjust the import path as needed
@@ -60,7 +60,7 @@ const ForgotPasswordComponent = () => {
                       id="email"
                       placeholder="បញ្ចូលអ៉ីម៉ែលរបស់អ្នក"
                     />
-                    <Error name="email" component="div" />
+                    <ErrorDynamic  name="email" component="div" />
                   </div>
 
                   

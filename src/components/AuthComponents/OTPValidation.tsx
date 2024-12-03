@@ -1,7 +1,7 @@
 'use client'
 import React, { useRef } from "react";
 
-interface OTPValidationProps {
+type OTPValidationProps ={
   length: number; // Number of OTP inputs (default is 6)
   onComplete: (otp: string) => void; // Callback when OTP is fully entered
 }

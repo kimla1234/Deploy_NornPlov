@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import { Inter, Suwannaphum } from "next/font/google";
-
+import SessionWrapper from "../SessionProvider";
+import StoreProvider from "../StoreProvider";
 const suwannaphum = Suwannaphum({
   subsets: ["khmer"],
   weight: ["400", "700"],
@@ -22,16 +23,18 @@ export default function  VerifyLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
+return (
+  <html lang="en">
+    <SessionWrapper>
       <body className={`${suwannaphum} ${inter} antialiased`}>
-        {/* Navbar */}
-
+        <StoreProvider>
         {/* Main content */}
-       {children}
-        {/* Footer */}
+        <main> {children}</main>
+        </StoreProvider>
       </body>
+    </SessionWrapper>
     </html>
   );
 }
+  
   
