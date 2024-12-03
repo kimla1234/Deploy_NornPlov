@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Inter, Suwannaphum } from "next/font/google";
 import NavbarPage from "../components/Navbar/NavbarPage";
+import FooterPage from "../components/Footer/FooterPage";
 
 const suwannaphum = Suwannaphum({
   subsets: ["khmer"],
@@ -31,6 +32,7 @@ export default function RootLayout({
         {/* Main content */}
         <main className="mx-auto ">{children}</main>
         {/* Footer */}
+        <FooterPage/>
       </body>
     </html>
   );
