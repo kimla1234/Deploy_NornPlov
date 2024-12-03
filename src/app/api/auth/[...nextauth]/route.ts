@@ -1,0 +1,1 @@
+export {GET, POST} from '@/src/app/Auth/auth'
