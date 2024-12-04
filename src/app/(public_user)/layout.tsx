@@ -1,6 +1,5 @@
-// src/app/public_user/layout.tsx 
-import "@/src/app/globals.css";
 import type { Metadata } from "next";
+import "@/src/app/globals.css";
 import "../globals.css";
 import { Inter, Suwannaphum } from "next/font/google";
 import NavbarPage from "@/src/components/Navbar/NavbarPage";

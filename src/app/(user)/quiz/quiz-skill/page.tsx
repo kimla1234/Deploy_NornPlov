@@ -1,17 +1,11 @@
 'use client'
-import QuizHeader from '@/src/components/QuizComponent/QuizHeader'
 import { QuizIntroContainer } from '@/src/components/QuizComponent/QuizIntroContainer'
 import React, { useState } from 'react'
-import enQuiz from '@/src/app/(user)/quiz/en.json'
-import { QuizOptContainer } from '@/src/components/QuizComponent/QuizOptContainer'
-import interest from '@/public/Quiz/optQuiz/Interest.png'
 import { Progress } from "@/src/components/ui/progress"
 import { QuizQuestionContainer } from '@/src/components/QuizComponent/QuizQuestionContainer'
 
 
 export default function QuizSkill() {
-
-    const { typeOfQuizEn, personalityMainEn } = enQuiz
 
 
     const [completedQuestions, setCompletedQuestions] = useState<number[]>([]); // Track which questions are answered
@@ -25,7 +19,7 @@ export default function QuizSkill() {
     }
 
     // Calculate the progress based on the completed questions
-    const progress = (completedQuestions.length / totalQuestions) * 100;
+    const progress = (completedQuestions.length / totalQuestions) * 100;    
 
 
     return (

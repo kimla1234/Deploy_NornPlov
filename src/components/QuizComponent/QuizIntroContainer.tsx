@@ -1,6 +1,6 @@
 import React from 'react'
 import QuizHeader from './QuizHeader'
-import enQuiz from '@/src/app/(user)/quiz/en.json'
+import enQuiz from '@/src/app/(user)/json/en.json'
 import { QuizInstructContainer } from './QuizInstructContainer'
 
 export const QuizIntroContainer = () => {
