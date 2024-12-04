@@ -14,10 +14,13 @@ export default function FooterPage() {
               <Link href="/" className="text-emerald-500 text-xl font-semibold">
                 Logo
               </Link>
-              <p className="text-textprimary text-md leading-relaxed">
+              <p className="text-textprimary block md:hidden lg:block text-md leading-relaxed">
                 Norm Plov is a website that helps individuals better understand
                 themselves and make effective decisions in pursuing their
                 current and future careers.
+              </p>
+              <p className="text-textprimary hidden md:block lg:hidden text-md leading-relaxed">
+              Norm Plov is a website that helps individuals understand themselves and make informed career decisions.
               </p>
             </div>
           </div>
@@ -25,7 +28,7 @@ export default function FooterPage() {
           {/* Navigation */}
           <div className="flex justify-start md:justify-center lg:justify-center ">
             <div>
-              <h3 className="font-semibold text-lg mb-4">Content</h3>
+              <h3 className="font-semibold text-2xl mb-4 text-textprimary">Content</h3>
               <ul className="space-y-1">
                 <li>
                   <Link
@@ -82,7 +85,7 @@ export default function FooterPage() {
           {/* Contact Information */}
           <div className="flex justify-start md:justify-center lg:justify-center">
             <div>
-              <h3 className="font-semibold text-lg mb-4">Contact</h3>
+              <h3 className="font-semibold text-2xl mb-4 text-textprimary">Contact</h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <Phone className="w-5 h-5 text-emerald-500 mt-1" />
@@ -112,8 +115,8 @@ export default function FooterPage() {
           {/* Partner Logos */}
           <div className="flex justify-start md:justify-center lg:justify-center">
             <div>
-              <h3 className="font-semibold text-lg mb-4">Our Sponsor</h3>
-              <div className="space-y-4">
+              <h3 className="font-semibold text-2xl mb-4 text-textprimary">Our Sponsor</h3>
+              <div className="lg:space-y-4 md:space-y-4 space-y-0  flex md:block lg:block  ">
                 <Image
                   src="/assets/MPTC-logo.jpg"
                   alt="Partner logo 1"

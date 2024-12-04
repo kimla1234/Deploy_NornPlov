@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -17,6 +18,8 @@ const navLinks = [
 export default function NavbarPage() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter();
+  const [userUUID, setUserUUID] = useState("");
 
   return (
     <div className="w-full bg-slate-50">
@@ -24,12 +27,24 @@ export default function NavbarPage() {
         {/* Logo and Navigation Links */}
         <div className="flex items-center space-x-6 lg:space-x-8">
           {/* Logo */}
-          <Link
-            href="/"
-            className="text-lg lg:text-xl text-green-700 font-bold"
-          >
-            Logo
-          </Link>
+          {userUUID === "" ? (
+            <Link
+              href="/"
+              className="text-lg lg:text-xl text-green-700 font-bold"
+            >
+              Logo
+            </Link>
+          ) : (
+            <div>
+              <Image
+                src="/logo.png"
+                alt="Logo"
+                width={30}
+                height={30}
+                className="object-contain"
+              />
+            </div>
+          )}
 
           {/* Navigation Links */}
           <nav className="hidden md:flex space-x-6 lg:space-x-8">
@@ -53,9 +68,13 @@ export default function NavbarPage() {
         <div className="hidden md:block lg:flex items-center space-x-6">
           {/* LanguageSelector hidden on md (iPad) */}
           <LanguageSelector />
-          <button className="bg-emerald-500 text-white text-base lg:text-lg rounded-xl px-5 py-2">
+          {/* Sign in button */}
+          <Link
+            href="/login"
+            className="bg-emerald-500 text-white text-base lg:text-lg rounded-xl px-5 py-2"
+          >
             Sign in
-          </button>
+          </Link>
         </div>
 
         {/* Hamburger Menu Button */}
@@ -88,9 +107,12 @@ export default function NavbarPage() {
           </nav>
           <div className="mt-4 flex items-center justify-between">
             <LanguageSelector />
-            <button className="bg-emerald-500 text-white text-base rounded-xl px-4 py-2">
+            <Link
+              href="/login"
+              className="bg-emerald-500 text-white text-base rounded-xl px-4 py-2"
+            >
               Sign in
-            </button>
+            </Link>
           </div>
         </div>
       )}

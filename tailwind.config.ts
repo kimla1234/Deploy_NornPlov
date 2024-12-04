@@ -1,3 +1,4 @@
+""
 import tailwindcssAnimate from "tailwindcss-animate";
 
 const config: {
