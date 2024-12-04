@@ -1,5 +1,4 @@
 import React from 'react'
-import stepupImage from '@/public/Quiz/stepup.png'
 import Image from 'next/image'
 import QuizHeader from './QuizHeader'
 

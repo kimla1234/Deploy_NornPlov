@@ -1,9 +1,6 @@
 'use client'
 import React, { useState } from 'react'
 import Image, { StaticImageData } from 'next/image'
-import interest from '@/public/Quiz/optQuiz/Interest.png'
-import { QuizButton } from './QuizButton'
-import { ArrowRight } from "lucide-react";
 import placeholderImage from '@/public/Quiz/placeholder.jpg'
 
 type props = {

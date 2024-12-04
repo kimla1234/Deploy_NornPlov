@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import QuizHeader from './QuizHeader'
 import { QuizButton } from './QuizButton'
-import { Input } from "@/src/components/ui/input"
 import { Link } from 'lucide-react'
 
 type props = {

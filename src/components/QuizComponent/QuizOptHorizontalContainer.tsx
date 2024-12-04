@@ -1,11 +1,9 @@
 'use client'
 import React, { useState } from 'react'
 import Image, { StaticImageData } from 'next/image'
-import interest from '@/public/Quiz/optQuiz/Interest.png'
 import { QuizButton } from './QuizButton'
 import { ArrowRight } from "lucide-react";
 import placeholderImage from '@/public/Quiz/placeholder.jpg'
-import { Badge } from "@/src/components/ui/badge"
 
 
 // this compoenent can be use as main option type of quiz or learning style technique card

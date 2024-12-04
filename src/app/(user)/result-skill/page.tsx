@@ -1,4 +1,3 @@
-import CircularProgress from '@/src/components/QuizComponent/CircularProgressBar/CircularProgress'
 import { QuizCircularProgress } from '@/src/components/QuizComponent/QuizCircularProgress'
 import { QuizResultIntroContainer } from '@/src/components/QuizComponent/QuizResultIntroContainer'
 import React from 'react'
