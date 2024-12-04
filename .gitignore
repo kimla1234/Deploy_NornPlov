@@ -37,7 +37,6 @@ next-env.d.ts
 
 .env.development
 .env.production
-
 # .gitignore
 .env
-.env.local
+.env.production
