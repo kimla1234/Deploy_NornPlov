@@ -36,7 +36,7 @@ export const authApi = normPlovApi.injectEndpoints({
                 body: email,
             }),
         }),
-
+        
         // restet password
         resetPassword: builder.mutation<any, { email:string,token: string; newPassword:string,confirmedPassword:string}>({
             query: ({email, token, newPassword,confirmedPassword}) => ({

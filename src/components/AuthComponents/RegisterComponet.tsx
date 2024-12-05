@@ -47,23 +47,44 @@ const RegisterComponent = () => {
     const dispatch = useAppDispatch();
     const [register,{status,error}] = useRegisterMutation(); // Mutation for Register
     const router = useRouter(); // Use router for navigation
+
+
     const handleSubmit = async (user:ValueTypes) => {
+        setIsLoading(true); // Start loading
         try{
-            const res = await register({data:user}).unwrap();
+            const response = await register({ data: user }).unwrap(); // Call the register mutation
+            console.log("Registration Response:", response); // Log the API response for debugging
+            
+        // Dispatch email to Redux and show a success message
         dispatch(setEmail(user.email));
-        console.log(setEmail(user.email));
-        toast.success("Register  Successfully.", {
-            autoClose: 3000,
-          });
-          router.push("/verify-code-register"); // Redirect to OTP verification page
+        console.log("Email saved to Redux:", user.email); // Debugging line
+        toast.success(response.message || "Registered Successfully!", { autoClose: 2000 });
+        setTimeout(() => {
+            router.push("/verify-code-register");
+        }, 3000);
+        // Redirect to OTP verification page
+        // router.push("/verify-code-register");
         }catch(error:any){
-            if (error.status === 409) { // Assuming 409 status code indicates conflict, i.e., username or email already exists
-                toast.error('Username or email already exists. Please choose another one.',{
-                 
-                });
-            } else {
-                toast.error('An error occurred during registration.');
-            }
+            console.error("Error during registration:", error); // Log the full error for debugging
+             // Check if the error is due to an already registered email
+        if (error.status === 400 && error?.data?.detail === "Email already registered.") {
+            toast.error("This email is already registered. Please use a different email or login.");
+        } else if (error?.data?.message) {
+            toast.error(error.data.message); // Show the API error message if available
+        } else {
+            // Fallback for any other error
+            toast.error("An error occurred during registration. Please try again.");
+        }
+            // if (error?.data?.message) {
+            //     // Show specific error message from the server
+            //     toast.error(error.data.message);
+            // } else if (error.status === 409) {
+            //     // Handle conflict errors (e.g., duplicate email or username)
+            //     toast.error("Username or email already exists. Please choose another one.");
+            // } else {
+            //     // General error fallback
+            //     toast.error("An error occurred during registration.");
+            // }
         }finally {
             setIsLoading(false); // Reset loading state to false
           }

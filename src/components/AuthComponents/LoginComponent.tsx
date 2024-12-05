@@ -1,21 +1,20 @@
 'use client';
 import React, { useState } from "react";
-import { useSession, signIn, signOut } from "next-auth/react"
+import {signIn} from "next-auth/react"
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import { IoCloseSharp } from 'react-icons/io5';
 import Label from './LabelComponent';
 import DynamicField from './AuthField';
 import ErrorDynamic from "./ErrorComponent";
-import ErrorComponent from './ErrorComponent'; // Use an alias
 import PasswordField from './PasswordField';
 import Link from 'next/link';
 import Button from './ButtonComponentForAuth'; 
 import { useAppDispatch,useAppSelector } from '@/src/redux/hooks';
 import { selectToken,setAccessToken} from '@/src/redux/feature/auth/authSlice';
 import 'react-toastify/dist/ReactToastify.css';
-import { Flip, ToastContainer, toast } from 'react-toastify';
-
+import {ToastContainer, toast } from 'react-toastify';
+import Image from 'next/image'
 type ValueTypes = {
   email: string;
   password: string;
@@ -27,10 +26,10 @@ const initialValues: ValueTypes = {
 };
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().email('អ៉ីម៉ែលមិនត្រឹមត្រូវ').required('អ្នកត្រូវបញ្ជូលអ៉ីម៉ែលរបស់អ្នក'),
+  email: Yup.string().email('Invalid Email').required('Required to input your email.'),
   password: Yup.string()
-    .min(8, 'ពាក្យសម្ងាត់របស់អ្នកខ្លីពេក - តិចបំផុតគឺ 8 តួរ')
-    .required('អ្នកត្រូវបញ្ជូលពាក្យសម្ងាត់របស់អ្នក'),
+    .min(8, 'Short Password, 8 characters required')
+    .required('Required to input your password'),
 });
 
 
@@ -79,10 +78,10 @@ const LoginComponent = () => {
   }
 
   return (
-    <section className="w-full h-screen flex justify-center items-center ">
-        <div className='w-[90%] h-[90%] sm:w-[75%] sm:h-[90%] md:w-[95%] md:h-[90%] xl:w-[85%] xl:h-[85%] m-auto border-1 border border-slate-100 rounded-xl'>
+    <section className="w-full h-full flex justify-center items-center ">
+        <div className='w-[90%] h-[90%] sm:w-[75%] sm:h-[90%] md:w-[95%] md:h-[90%] xl:w-[85%] xl:h-[85%] m-auto border-1 border-slate-200 bg-white rounded-xl'>
         <div className="px-6 sm:px-8 md:px-6 xl:px-10">
-            <div className="right-9 top-11 sm:right-28 sm:top-12 md:right-5 md:top-10 lg:right-7 xl:right-16 absolute xl:top-16">
+            <div className="right-9 top-11 sm:right-28 sm:top-12 md:right-5 md:top-10 lg:right-7 xl:right-20 absolute xl:top-16">
             <button
                 className="text-2xl text-gray-500 hover:text-gray-700"
                 onClick={() => console.log('Close button clicked')}
@@ -91,7 +90,7 @@ const LoginComponent = () => {
             </button>
             </div>
         <div className=" h-fit mt-20 xl:mt-24">
-          <h1 className="text-4xl font-bold text-primary">ចូលគណនី</h1>
+          <h1 className="text-4xl font-bold text-primary">Login</h1>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -106,23 +105,23 @@ const LoginComponent = () => {
                 <div className="space-y-4 mt-5">
                   {/* Email Field */}
                   <div>
-                    <Label htmlFor="email" text="អ៉ីម៉ែល" required />
+                    <Label htmlFor="email" text="Email" required />
                     <DynamicField
                       type="text"
                       name="email"
                       id="email"
-                      placeholder="បញ្ចូលអ៉ីម៉ែលរបស់អ្នក"
+                      placeholder="Input Your Email "
                     />
                     <ErrorDynamic name="email" component="div" />
                   </div>
 
                   {/* Password Field */}
                   <div>
-                    <Label htmlFor="password" text="ពាក្យសម្ងាត់" required />
+                    <Label htmlFor="password" text="Password" required />
                     <PasswordField
                       name="password"
                       id="password"
-                      placeholder="បញ្ចូលពាក្យសម្ងាត់របស់អ្នក"
+                      placeholder="Input Your Password"
                       className="custom-class mt-1"
                     />
                     <ErrorDynamic name="password" component="div" />
@@ -133,7 +132,7 @@ const LoginComponent = () => {
                 <div className="mt-2 text-right">
                   <Link href="/forgot-password">
                     <span className="text-sm text-primary hover:underline hover:font-semibold ">
-                      ភេ្លចពាក្យសម្ងាត់របស់អ្នក?
+                      Forgot Password?
                     </span>
                   </Link>
                 </div>
@@ -142,7 +141,7 @@ const LoginComponent = () => {
                 <div className="mt-6">
                   <Button
                     type="submit"
-                    text="ចូលគណនី"
+                    text="Login"
                     isLoading={isLoading} // Show loading spinner when the form is submitting
                     className="w-full bg-primary hover:bg-primary text-white font-medium border-collapse"
                   />
@@ -154,24 +153,25 @@ const LoginComponent = () => {
                     <span className="w-1/2 border-b border-gray-300"></span>
                 </div>
                  {/* Google Button */}
-                <div className="mt-4">
+                <div className="mt-4 text-center">
                     <Button
+                   
                     type="button"
-                    text="ភ្ជាប់ជាមួយ Google"  
+                    text="Continue with Google"  
                     onClick={() => signIn('google')}
                     icon={
-                        <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                        alt="Google"
-                        className="w-5 h-5"
-                    />
+                    <Image
+                   src="/assets/google.png"
+                   width={24} height={24}
+                    alt="Google icon"
+                  />
                     }
-                    className="w-full border-2 border-primary  text-textprimary hover:bg-primary hover:text-white"
+                    className=" w-full border-2 border-primary  text-textprimary "
                     />
                 </div>
                 {/* Don't have accoun? Register */}
                 <div className='mt-4 text-center text-textprimary '>
-                    <span>មិនទាន់មានគណនីមែនទេ?<Link href="/register" className='text-primary hover:underline hover:font-semibold pl-1.5'>បង្កើតគណនី</Link></span>
+                    <span>Dont't have account yet?<Link href="/register" className='text-primary hover:underline hover:font-semibold pl-1.5'>Register</Link></span>
                 </div>
               </Form>
               
