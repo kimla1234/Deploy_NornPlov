@@ -8,7 +8,7 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
       address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
       major : "ព័ត៌មានវិទ្យា",
       logo: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCck6y-Js7S_p525kcceN2rTwb0_KXMG7KC4FJvTSfunuwDIeAPx382aKePtMaNArv7oMCyAkzOnIyZTeeOqshCzWU98Uf-XXLqavVGPUwfFoZzCcsibJeLfjUlRTkS1kZVdkU9ksRqLc/s320/ITC+LOGO.gif",
-      link: "#",
+      link: "/university-detail",
     },
     {
       name: "សកសវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",

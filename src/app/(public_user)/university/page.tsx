@@ -1,7 +1,6 @@
 "use client";
 import CardUniversity from "@/src/components/ui/CardUniversity";
 import React, { useState } from "react";
-import { BiRightArrowAlt } from "react-icons/bi";
 import { FaSearch } from "react-icons/fa";
 import Select from "react-select";
 
@@ -109,27 +108,32 @@ export default function Page() {
             </h1>
           </div>
           <CardUniversity />
-          <div className="mt-8 mb-4 flex  justify-center">
-            <div className="flex space-x-4">
-              <button
-                className="mx-1 rounded-xl px-3 py-2 bg-gray-200 text-gray-500 font-medium  cursor-not-allowed"
-                disabled
-              >
-                ថយក្រោយ
-              </button>
-
-              <a
-                href="#"
-                className="mx-1 rounded-full px-3 py-2 bg-gray-200 text-gray-700  hover:bg-blue-500 hover:text-gray-200 "
-              >
-                1
-              </a>
-              <a
-                href="#"
-                className="mx-1 px-3 py-2 rounded-xl bg-gray-200 text-gray-700 font-medium hover:bg-blue-500 hover:text-gray-200 "
-              >
-                បន្ទាប់
-              </a>
+          <div className=" mt-8 mb-6 ">
+            {/* Pagination */}
+            <div className="mt-6 flex items-center justify-between  pt-4">
+              <p className="text-lg text-gray-600">
+                Showing 1 to 10 of 20 results
+              </p>
+              <div className="flex gap-2">
+                <button
+                  disabled
+                  className="px-4 py-2 text-md font-medium text-gray-500 bg-gray-200 rounded-xl cursor-not-allowed"
+                >
+                  Previous
+                </button>
+                <button className="px-4 py-2 text-md font-medium text-white bg-primary rounded-full hover:primary focus:outline-none focus:ring-2 focus:ring-secondary">
+                  1
+                </button>
+                <button className="px-4 py-2 text-md font-medium text-white bg-primary rounded-full hover:primary focus:outline-none focus:ring-2 focus:ring-secondary">
+                  2
+                </button>
+                <button className="px-4 py-2 text-md font-medium text-white bg-primary rounded-full hover:primary focus:outline-none focus:ring-2 focus:ring-secondary">
+                  3
+                </button>
+                <button className="px-4 py-2 text-md font-medium text-white bg-primary rounded-xl hover:primary focus:outline-none focus:ring-2 focus:ring-secondary">
+                  Next
+                </button>
+              </div>
             </div>
           </div>
         </div>
