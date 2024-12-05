@@ -1,0 +1,34 @@
+{
+    "personalityMainKh": {
+      "title": "តេស្តវាយតម្លៃតាមបុគ្គលិកលក្ខណៈ",
+      "desc": "យល់ដឹងពីប្រភេទបុគ្គលិកលក្ខណៈរបស់អ្នកតាមរយះ MBTI (Myers-Briggs Type Indicator) បង្កើតឡើងដោយលោក Carl Jung",
+      "buttonText": "ចាប់ផ្តើមតេស្ត",
+      "route": "personality-test"
+    },
+
+    "personalityTestintroKh": {
+      "title": "តេស្តវាយតម្លៃតាម",
+      "highlight": "បុគ្គលិកលក្ខណៈ",
+      "description": "ដោយផ្អែកលើប្រភេទតេស្តនេះ អ្នកនឹងទទួលបានលទ្ធផលពីប្រភេទបុគ្គលិកលក្ខណៈរបស់អ្នកតាមរយះ MBTI (Myers-Briggs Type Indicator) បង្កើតឡើងដោយលោក Carl Jung និងការណែនាំពីអាជីពការងារ ជំនាញដែលគួរជ្រើសរើសកាន់តែប្រសើរជាងមុន។"
+    },
+
+    "questions": [
+    {
+      "question": "When faced with a challenging problem, I find multiple ways to approach a solution.",
+      "questionIndex": 0
+    },
+    {
+      "question": "I often prefer working alone rather than in a team.",
+      "questionIndex": 1
+    },
+    {
+      "question": "I enjoy problem-solving activities.",
+      "questionIndex": 2
+    },
+    {
+      "question": "I prefer to plan things in advance rather than leaving them to the last minute.",
+      "questionIndex": 3
+    }
+  ]
+
+}

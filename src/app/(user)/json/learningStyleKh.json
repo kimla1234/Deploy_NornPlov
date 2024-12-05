@@ -1,0 +1,52 @@
+{
+    "learningStyleMainKh": {
+      "title": "តេស្តវាយតម្លៃតាមរបៀបសិក្សា",
+      "desc": "យល់ដឹងពីរបៀបនៃការសិក្សារបស់អ្នកតាមរយះ VARY Theory បង្កើតឡើងដោយលោក Neil Fleming ",
+      "buttonText": "ចាប់ផ្តើមតេស្ត",
+      "route": "learning-style-test"
+    },
+
+    "learningStyleTestintroKh": {
+      "title": "តេស្តវាយតម្លៃតាម​",
+      "highlight": "របៀបសិក្សា",
+      "description": "ដោយផ្អែកលើប្រភេទតេស្តនេះ អ្នកនឹងទទួលបានលទ្ធផលពីរបៀបនៃការសិក្សារបស់អ្នកតាមរយះ VARY Theory បង្កើតឡើងដោយលោក Neil Fleming  និងការណែនាំពីអាជីពការងារ ជំនាញដែលគួរជ្រើសរើសកាន់តែប្រសើរជាងមុន។"
+    },
+
+    "questions": [
+    {
+      "question": "I understand information best when it is presented using diagrams, charts, or videos.",
+      "questionIndex": 0
+    },
+    {
+      "question": "Using color-coding or visual aids helps me organize and recall information.",
+      "questionIndex": 1
+    },
+    {
+      "question": "I learn more effectively when someone explains concepts to me verbally.",
+      "questionIndex": 2
+    },
+    {
+      "question": "Group discussions or talking through ideas help me grasp concepts better.",
+      "questionIndex": 3
+    },
+    {
+      "question": "I prefer to learn by reading detailed instructions or writing notes.",
+      "questionIndex": 4
+    },
+    {
+      "question": "Writing summaries or lists helps me retain new information.",
+      "questionIndex": 5
+    },
+    {
+      "question": "I learn best by doing hands-on activities or experiments.",
+      "questionIndex": 6
+    },
+    {
+      "question": "Practicing real-life examples or physically interacting with materials helps me understand better.",
+      "questionIndex": 7
+    }
+
+  ]
+
+
+}

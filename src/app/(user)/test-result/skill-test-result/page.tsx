@@ -15,17 +15,19 @@ import enterprising from '@/public/Quiz/interest/enterprising.png'
 import { QuizOptHorizontalContainer } from '@/src/components/QuizComponent/QuizOptHorizontalContainer'
 import { RecommendationCard } from '@/src/components/QuizComponent/RecommendationCard'
 import { QuizLearningStyleResultCard } from '@/src/components/QuizComponent/QuizLearningStyleResultCard'
+import personalityJson from '@/src/app/(user)/json/personalityKh.json'
 
-export default function Skill() {
+export default function SkillTestResult() {
 
-  const { personalityResultintroEn, RecommendationEn } = enQuiz
+  const { RecommendationEn } = enQuiz
+  const {personalityTestintroKh} = personalityJson
 
   return (
     <div className='w-full bg-bgPrimaryLight'>
       <QuizResultIntroContainer
-        title={personalityResultintroEn.title}
-        highlight={personalityResultintroEn.highlight}
-        description={personalityResultintroEn.description}
+        title={personalityTestintroKh.title}
+        highlight={personalityTestintroKh.highlight}
+        description={personalityTestintroKh.description}
         size="md"
         type="result"
       />
