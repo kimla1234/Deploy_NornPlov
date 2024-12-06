@@ -43,22 +43,22 @@ export default function Page() {
 
   return (
     <div className="mb-5">
-      <div className="relative min-h-[300px] w-full">
+      <div className="relative min-h-[200px] w-full ">
         {/* Background with overlay */}
         <div
-          className="absolute inset-0 bg-cover bg-center w-full h-96"
+          className="absolute inset-0 bg-cover bg-center lg:w-full lg:h-96 md:w-full md:h-80 w-full h-60 "
           style={{
             backgroundImage: 'url("/assets/bg-uni.jpg")',
           }}
         ></div>
 
         {/* Content */}
-        <div className="relative z-10 container mx-auto px-4 py-32">
-          <h1 className="text-4xl md:text-4xl lg:text-5xl bordered-text font-bold text-white text-center mb-8">
+        <div className="relative z-10 container mx-auto px-4 lg:py-32 md:py-20 py-8">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl bordered-text font-bold text-white text-center lg:mb-8 md:mb-8 mb-2">
             ស្វែងរកគ្រឹះស្ថានសិក្សាទៅកម្ពុជា
           </h1>
 
-          <div className="max-w-4xl mx-auto space-y-4">
+          <div className="lg:max-w-4xl md:max-w-xl max-w-4xl mx-auto lg:space-y-4 md:space-y-4 space-y-2 ">
             {/* Search input */}
             <div className="flex">
               <input
@@ -77,7 +77,7 @@ export default function Page() {
             </div>
 
             {/* Filters */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:gap-4 md:gap-4 gap-2">
               <Select
                 options={universityOptions}
                 placeholder="សាកលវិទ្យាល័យ"
@@ -98,20 +98,20 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <section className="flex justify-center ">
-        <div className="w-[80%]">
+      <section className="flex justify-center  ">
+        <div className="lg:w-[80%] md:w-[92%] w-[92%] ">
           <div>
-            <h1 className="text-2xl w-[90%] lg:w-full md:w-full md:text-4xl lg:text-4xl font-bold lg:text-start md:text-center text-center mb-2 text-textprimary">
+            <h1 className="text-2xl w-[90%] lg:mt-0 md:mt-4 mt-4 lg:w-full md:w-full md:text-2xl lg:text-4xl font-bold lg:text-start md:text-start text-start mb-2 text-textprimary">
               {selectedUniversity?.label
                 ? `${selectedUniversity.label}`
                 : "សាកលវិទ្យាល័យរដ្ឋ និងឯកជន"}
             </h1>
           </div>
           <CardUniversity />
-          <div className=" mt-8 mb-6 ">
+          <div className=" lg:mt-8 md:mt-4 mt-4 mb-6 ">
             {/* Pagination */}
-            <div className="mt-6 flex items-center justify-between  pt-4">
-              <p className="text-lg text-gray-600">
+            <div className="mt-6 flex items-center lg:justify-between md:justify-between justify-center  pt-4">
+              <p className="text-lg text-gray-600 hidden md:block lg:block">
                 Showing 1 to 10 of 20 results
               </p>
               <div className="flex gap-2">

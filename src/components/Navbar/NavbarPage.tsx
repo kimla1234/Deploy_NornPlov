@@ -7,12 +7,12 @@ import { Menu, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/test", label: "Test" },
-  { href: "/university", label: "University" },
-  { href: "/jobs", label: "Jobs" },
-  { href: "/policy", label: "Policy" },
-  { href: "/about-us", label: "About us" },
+  { href: "/", label: "ទំព័រដើម" },
+  { href: "/test", label: "តេស្ត" },
+  { href: "/university", label: "គ្រឹស្ថានសិក្សា" },
+  { href: "/jobs", label: "ការងារ" },
+  { href: "/privacy-policy", label: "ឯកជនភាព" },
+  { href: "/about-us", label: "អំពីយើង" },
 ];
 
 export default function NavbarPage() {
@@ -71,9 +71,9 @@ export default function NavbarPage() {
           {/* Sign in button */}
           <Link
             href="/login"
-            className="bg-emerald-500 text-white text-base lg:text-lg rounded-xl px-5 py-2"
+            className="bg-emerald-500 text-white text-base lg:text-lg rounded-xl lg:px-5 lg:py-2 md:px-4 md:py-1 px-5 py-2"
           >
-            Sign in
+            ចុះឈ្មោះ
           </Link>
         </div>
 
@@ -111,7 +111,7 @@ export default function NavbarPage() {
               href="/login"
               className="bg-emerald-500 text-white text-base rounded-xl px-4 py-2"
             >
-              Sign in
+              ចុះឈ្មោះ
             </Link>
           </div>
         </div>
@@ -123,9 +123,9 @@ export default function NavbarPage() {
 function LanguageSelector() {
   return (
     <div className="flex md:hidden lg:flex items-center space-x-4">
-      <LanguageOption flag="/assets/khmer-flag.png" label="Khmer" />
+      <LanguageOption flag="/assets/khmer-flag.png" label="ភាសាខ្មែរ" />
       <div className="h-6 border-l border-slate-400"></div>
-      <LanguageOption flag="/assets/english-flag.png" label="English" />
+      <LanguageOption flag="/assets/english-flag.png" label="អង់គ្លេស" />
     </div>
   );
 }

@@ -2,6 +2,7 @@
 import React from "react";
 import { MapPin, Globe, Phone, Mail, Book, Calendar } from "lucide-react";
 import { ChevronDown } from "lucide-react";
+import { FaBook } from "react-icons/fa";
 
 // Button component
 const Button = React.forwardRef<
@@ -34,7 +35,7 @@ const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div className={`p-6 ${className}`} ref={ref} {...props} />
+  <div className={`lg:p-6 md:p-4 p-3 ${className}`} ref={ref} {...props} />
 ));
 CardContent.displayName = "CardContent";
 
@@ -45,7 +46,7 @@ const Button1 = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <button
     ref={ref}
-    className={`inline-flex items-center justify-between rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
+    className={`inline-flex items-center bg-green-50 justify-between rounded-md  px-4 py-2 text-sm font-medium text-gray-700   focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
     {...props}
   />
 ));
@@ -54,45 +55,79 @@ Button.displayName = "Button";
 export default function Page() {
   const [isOpen, setIsOpen] = React.useState(false);
   const courses = [
-    { title: "គណិតវិទ្យា", price: "$800 - $1200", duration: "រយៈ 4 ខែ" },
-    { title: "រូបវិទ្យា", price: "$800 - $1200", duration: "រយៈ 4 ខែ" },
-    { title: "គីមីវិទ្យា", price: "$800 - $1200", duration: "រយៈ 4 ខែ" },
-    { title: "ជីវវិទ្យា", price: "$800 - $1200", duration: "រយៈ 4 ខែ" },
-    { title: "ឌីជីថលវិទ្យា", price: "$800 - $1200", duration: "រយៈ 4 ខែ" },
-    { title: "បច្ចេកវិទ្យា", price: "$800 - $1200", duration: "រយៈ 4 ខែ" },
+    { title: "គណិតវិទ្យា", price: "$800 - $1200", duration: "សិក្សា 4 ឆ្នាំ" },
+    { title: "រូបវិទ្យា", price: "$800 - $1200", duration: "សិក្សា 4 ឆ្នាំ" },
+    { title: "គីមីវិទ្យា", price: "$800 - $1200", duration: "សិក្សា 4 ឆ្នាំ" },
+    { title: "ជីវវិទ្យា", price: "$800 - $1200", duration: "សិក្សា 4 ឆ្នាំ" },
+    {
+      title: "ឌីជីថលវិទ្យា",
+      price: "$800 - $1200",
+      duration: "សិក្សា 4 ឆ្នាំ",
+    },
+    {
+      title: "បច្ចេកវិទ្យា",
+      price: "$800 - $1200",
+      duration: "សិក្សា 4 ឆ្នាំ",
+    },
   ];
 
   return (
     <div className="min-h-screen bg-bglight">
       {/* Header */}
       <header className="relative">
-        <div className="w-full h-[300px] overflow-hidden">
+        <div className="lg:w-full lg:h-[300px] md:w-full md:h-[200px] w-full h-[100px] overflow-hidden">
           <img
             src="/assets/cover-sala.png"
             alt="ISTAD Students"
             className="w-full h-full object-cover"
           />
         </div>
-
-        <div className="container mx-auto px-4  relative -mt-12">
-          <div className="bg-white bg-opacity-30 w-auto h-[290px] backdrop-blur-lg border rounded-xl p-6 shadow-sm flex flex-col md:flex-row items-center gap-6">
+        {/* screen laptop and ipad */}
+        <div className="hidden md:block lg:block  container mx-auto px-4  relative lg:-mt-12 md:-mt-12 -mt-6">
+          <div className="bg-white  bg-opacity-30 lg:w-auto lg:h-[290px] md:w-auto md:h-[230px] w-auto h-[200px] backdrop-blur-lg border rounded-xl lg:p-6 md:p-6 p-3 shadow-sm flex  flex-row md:flex-row items-center lg:gap-6 md:gap-6 gap-2">
             <img
               src="/assets/logo-istad.jpg"
               alt="ISTAD Logo"
-              className="w-60 h-60 rounded-full border-4 border-primary"
+              className="lg:w-60 lg:h-60 md:w-32 md:h-32 w-10 h-10 rounded-full lg:border-4 md:border-3 border border-primary"
             />
             <div className="text-center md:text-left">
-              <h1 className="text-2xl md:text-5xl font-bold text-textprimary mb-3">
+              <h1 className="lg:text-5xl md:text-2xl text-lg font-bold text-textprimary mb-3">
                 មជ្ឈមណ្ឌលអភិវឌ្ឍន៍វិទ្យាសាស្ត្រ និងបច្ចេកវិទ្យាកម្រិតខ្ពស់
               </h1>
-              <p className="text-gray-600 text-3xl mb-2">
+              <p className="text-gray-600 lg:text-3xl md:text-xl text-sm mb-2">
                 INSTITUTION OF SCIENCE AND TECHNOLOGY ADVANCED DEVELOPMENT
               </p>
-              <p className="text-textprimary text-2xl mb-4">
+              <p className="text-textprimary lg:text-2xl md:text-xl text-sm mb-4">
                 ផ្ទះលេខ ២៤ ផ្លូវ ៥៦២ សង្កាត់បឹងកក់ ១ ខណ្ឌទួលគោក រាជធានីភ្នំពេញ
               </p>
-              <button className="bg-primary text-lg text-white py-2 px-6 rounded-xl hover:bg-secondary transition-all">
+              <button className="bg-primary lg:text-lg md:text-lg text-sm text-white py-2 px-6 rounded-xl hover:bg-secondary transition-all">
                 ចូលទៅកាន់គេហទំព័រ
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* screen phone */}
+        <div className="block md:hidden lg:hidden  container mx-auto px-4  relative lg:-mt-12 md:-mt-12 -mt-6">
+          <div className="bg-white   bg-opacity-30 lg:w-auto lg:h-[290px] md:w-auto md:h-[230px] w-auto h-[140px] backdrop-blur-lg border rounded-xl lg:p-6 md:p-6 p-3 shadow-sm lg:flex md:flex  flex-row md:flex-row items-center lg:gap-6 md:gap-6 gap-2">
+            <div className="flex">
+              <img
+                src="/assets/logo-istad.jpg"
+                alt="ISTAD Logo"
+                className="lg:w-60 lg:h-60 md:w-32 md:h-32 w-14 h-14 rounded-full lg:border-4 md:border-3 border border-primary"
+              />
+              <div className="text-center md:text-left">
+                <h1 className="lg:text-5xl md:text-2xl text-lg font-bold text-textprimary mb-3">
+                  មជ្ឈមណ្ឌលអភិវឌ្ឍន៍វិទ្យាសាស្ត្រ និងបច្ចេកវិទ្យាកម្រិតខ្ពស់
+                </h1>
+              </div>
+            </div>
+            <div className="flex justify-between  items-center">
+              <p className="text-textprimary lg:text-2xl md:text-xl text-sm mb-4">
+                ផ្ទះលេខ ២៤ ផ្លូវ ៥៦២ សង្កាត់បឹងកក់ ១ ខណ្ឌទួលគោក រាជធានីភ្នំពេញ
+              </p>
+              <button className="bg-primary lg:text-lg md:text-lg text-sm text-white lg:py-2 lg:px-6 md:py-2 md:px-6 py-2 px-3 rounded-xl hover:bg-secondary transition-all">
+               គេហទំព័រ
               </button>
             </div>
           </div>
@@ -100,9 +135,9 @@ export default function Page() {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4  py-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <main className="container mx-auto px-4  lg:py-8 md:py-4 py-2.5 grid grid-cols-1 md:grid-cols-3 lg:gap-8 md:gap-4 gap-2.5">
         {/* Sidebar */}
-        <div className="md:col-span-1 space-y-3">
+        <div className="md:col-span-1 lg:space-y-3 md:space-y-2 space-y-2.5">
           <Card>
             <CardContent>
               <h2 className="font-bold text-textprimary text-xl mb-4">
@@ -115,29 +150,31 @@ export default function Page() {
                 </div>
               </div>
               <div className="space-y-3 text-sm">
-                <div className="flex  gap-2">
-                  <MapPin className="w-6 h-6 text-gray-400" />
-                  <div className=" text-[16px]">
-                    Sangkat Boeung Kak I, Khan Toul Kork, Phnom Penh
+                <div className="flex items-start gap-2">
+                  <MapPin className="lg:w-6 lg:h-6 md:w-10 md:h-10 w-8 h-8 text-gray-400" />
+                  <div className=" lg:text-[16px] md:text-sm text-[16px] text-textprimary">
+                    ផ្ទះលេខ ២៤ ផ្លូវ ៥៦២ សង្កាត់បឹងកក់ ១ ខណ្ឌទួលគោក
+                    រាជធានីភ្នំពេញ
                   </div>
                 </div>
-                <p className="flex items-center gap-2">
-                  <Globe className="w-6 h-6 text-gray-400" />
-                  <a
-                    href="https://www.istad.edu.kh/"
-                    className="text-blue-500 hover:underline text-[16px]"
-                  >
+                <div className="flex items-center gap-2 ">
+                  <Globe className="lg:w-5 lg:h-5 md:w-4 md:h-4 w-5 h-5 text-gray-400 lg:text-[16px] md:text-[16px] text-[16px]" />
+                  <div className="lg:text-[16px] md:text-sm text-[16px] text-primary ">
                     https://www.istad.edu.kh/
-                  </a>
-                </p>
-                <p className="flex items-center gap-2">
-                  <Phone className="w-6 h-6 text-gray-400 text-[16px]" />
-                  <span className="text-[16px]">+855959910</span>
-                </p>
-                <p className="flex items-center gap-2">
-                  <Mail className="w-6 h-6 text-gray-400" />
-                  <span className="text-[16px]">info.istad@gmail.com</span>
-                </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Phone className="lg:w-5 lg:h-5 md:w-4 md:h-4 w-5 h-5 text-gray-400  lg:text-[16px] md:text-[16px] text-[16px]" />
+                  <span className="lg:text-[16px] md:text-sm text-[16px] text-textprimary">
+                    (+855)959910
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Mail className="lg:w-5 lg:h-5 md:w-4 md:h-4 w-5 h-5 text-gray-400" />
+                  <span className="lg:text-[16px] md:text-sm text-[16px] text-textprimary">
+                    info.istad@gmail.com
+                  </span>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -176,7 +213,7 @@ export default function Page() {
               <h2 className="font-bold text-xl text-textprimary mb-4">
                 អំពីសាលា
               </h2>
-              <div className="space-y-2 text-lg text-gray-600">
+              <div className="space-y-2 lg:text-lg md:text-lg text-md text-gray-600">
                 <p>
                   សកលវិទ្យាល័យភូមិន្ទភ្នំពេញត្រួវបានបង្កើតឡើងដំបូងនៅឆ្នាំ១៩៦០
                   អំឡុងពេលដែលប្រទេសកម្ពុជាមានការរីកចម្រើនយ៉ាងខ្លាំងក្លា ដោយមាន
@@ -191,17 +228,22 @@ export default function Page() {
               </div>
             </CardContent>
           </Card>
-          <div className="bg-white p-6 rounded-xl shadow-sm mt-4 mb-4">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl font-bold text-gray-900">ជំនាញសិក្សា</h2>
+          <div className="bg-white lg:p-6 md:p-4 p-3  rounded-xl shadow-sm mt-4 mb-4">
+            <div className="flex justify-between items-center mb-2">
+              <h2 className="lg:text-2xl md:text-xl text-xl font-bold text-textprimary">
+                ជំនាញសិក្សា
+              </h2>
               <span className="text-orange-500 font-medium">
                 តម្លៃសិក្សា៖ 350$ - 1200$
               </span>
             </div>
 
-            <div className="relative bg-primary">
-              <Button1 onClick={() => setIsOpen(!isOpen)} className="w-full ">
-                <span>មុខវិជ្ជាបច្ចេកវិទ្យាគមនាគមន៍</span>
+            <div className="relative ">
+              <Button1
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full border rounded-xl"
+              >
+                <span>មហាវិទ្យាល័យវិទ្យាសាស្ត្រ</span>
                 <ChevronDown
                   className={`ml-2 h-4 w-4 transition-transform ${
                     isOpen ? "transform rotate-180 " : ""
@@ -210,9 +252,14 @@ export default function Page() {
               </Button1>
 
               {isOpen && (
-                <div className="absolute z-10 mt-1 w-full rounded-md bg-green-50 shadow-lg">
+                <div className="absolute z-10 mt-1 w-full  bg-green-50 shadow-lg rounded-xl">
                   <div className="py-1">
-                    {["ជំនាញទី១", "ជំនាញទី២", "ជំនាញទី៣"].map((item, index) => (
+                    {[
+                      "មហាវិទ្យាល័យវិទ្យាសាស្ត្រ",
+                      "មហាវិទ្យាល័យវិស្វកម្ម",
+                      "មហាវិទ្យាល័យវិទ្យាអប់រំ",
+                      "មហាវិទ្យាល័យវិទ្យាភាសា",
+                    ].map((item, index) => (
                       <button
                         key={index}
                         className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
@@ -225,21 +272,31 @@ export default function Page() {
               )}
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-4 md:gap-2 gap-2">
             {courses.map((course, index) => (
               <Card key={index}>
                 <CardContent>
-                  <div className="flex items-start gap-4">
-                    <Book className="w-6 h-6 text-emerald-500" />
-                    <div>
-                      <h3 className="font-semibold mb-2">{course.title}</h3>
-                      <p className="text-sm text-gray-600 mb-1">
-                        {course.price}
-                      </p>
-                      <p className="text-sm text-gray-600 flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        {course.duration}
-                      </p>
+                  <div className="flex gap-4 items-center w-full">
+                    <FaBook className="lg:w-12 lg:h-8 md:w-6 md:h-10 w-10 h-10 text-primary lg:block md:hidden hidden " />
+                    <div className=" w-full">
+                      <div className="flex space-x-4">
+                        <h3 className=" text-lg mb-2 text-textprimary">
+                          {course.title}
+                        </h3>
+                      </div>
+                      <div className="flex  justify-between  ">
+                        <div>
+                          <p className="text-md text-gray-600 mb-1">
+                            {course.price}
+                          </p>
+                        </div>
+                        <div className="flex justify-center items-center space-x-2">
+                          <p className="text-md text-gray-600 flex  items-center gap-1">
+                            {course.duration}
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
