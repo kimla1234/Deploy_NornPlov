@@ -3,6 +3,13 @@
 @tailwind utilities;
 body{
   font-family: Suwannaphum, Inter, sans-serif;
+
+  
+}
+
+.Toastify__toast-icon {
+  align-self: flex-start; /* Align the icon to the top */
+  flex-shrink: 0; /* Prevent resizing */
 }
 
 @layer base {

@@ -15,9 +15,10 @@ type props = {
   buttonText?: string;
   type?: 'main' | 'learninigStyle'
   badgeText?: string;
+  onClick?: () => void;
 }
 
-export const QuizOptHorizontalContainer = ({ title, desc, image, buttonText, type = 'main', badgeText }: props) => {
+export const QuizOptHorizontalContainer = ({ title, desc, image, buttonText, type = 'main', badgeText , onClick}: props) => {
 
   const [imgSrc, setImgSrc] = useState(image);
 
@@ -35,8 +36,8 @@ export const QuizOptHorizontalContainer = ({ title, desc, image, buttonText, typ
         />
       </div>
 
-      {/* Text and Response Section */}
-      <div className="flex flex-col justify-between  ">
+      
+      <div className="flex flex-col justify-between gap-4  ">
         <div>
           <h2 className={`text-xl font-bold  ${type === 'main' ? 'text-primary mb-1' : 'text-secondary '} `}>{title}</h2>
           <p  className={`rounded-full text-textprimary text-opacity-80 text-sm mb-2 ${type === 'main' ? 'hidden' : ''}`}>{badgeText}</p>
@@ -46,7 +47,7 @@ export const QuizOptHorizontalContainer = ({ title, desc, image, buttonText, typ
         </div>
 
         <div className={`flex justify-start md:justify-end ${type === 'main' ? '' : 'hidden'}`}>
-          <QuizButton title={buttonText ? buttonText : 'Start Quiz'} rounded='full' icon={<ArrowRight />} type='rightIcon' />
+          <QuizButton title={buttonText ? buttonText : 'Start Quiz'} rounded='full' icon={<ArrowRight />} type='rightIcon' onClick={onClick}/>
         </div>
 
       </div>

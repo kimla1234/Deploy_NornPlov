@@ -21,18 +21,6 @@
       "description": "Depending on the type of test you choose, you will get results on career and major guidance that you should choose and get to know yourself better."
     },
 
-    "personalityResultintroEn": {
-      "title": "Personality",
-      "highlight": " Test",
-      "description": "Based on this type of test, you will get the results of your personality type through the MBTI (Myers-Briggs Type Indicator) developed by Carl Jung and guidance on which career path to choose."
-    },
-
-    "personalityMainEn": {
-      "title": "Test based on personality assessment",
-      "desc": "Understand your personality type through MBTI (Myers-Briggs Type Indicator) Developed by Carl Jung",
-      "buttonText": "Start Quiz"
-    },
-
     "RecommendationEn": {
       "jobTitle": "Teacher / Trainer",
       "jobdesc": "A Teacher/Trainer educates and inspires learners by delivering engaging lessons or training sessions tailored to their needs. They create structured plans, assess progress, and provide feedback to ensure effective skill and ...",

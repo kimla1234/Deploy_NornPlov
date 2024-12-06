@@ -5,6 +5,8 @@ import "../globals.css";
 import { Inter, Suwannaphum } from "next/font/google";
 import NavbarPage from "@/src/components/Navbar/NavbarPage";
 import FooterPage from "@/src/components/Footer/FooterPage";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const suwannaphum = Suwannaphum({
   subsets: ["khmer"],
@@ -30,6 +32,18 @@ export default function UserLayout({
       <body className={`${suwannaphum.className} ${inter} antialiased`}>
         <NavbarPage/>
         <main className="w-full"> {children}</main>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light" // You can set 'light', 'dark', or 'colored'
+        />
         <FooterPage/>
       </body>
     </html>
