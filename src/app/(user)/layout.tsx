@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import { Inter, Suwannaphum } from 'next/font/google';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const suwannaphum = Suwannaphum({
   subsets: ["khmer"],
@@ -28,8 +30,22 @@ export default function UserLayout({
         {/* Navbar */}
 
         {/* Main content */}
-      <main> {children}</main>
+        <main> {children}</main>
         {/* Footer */}
+
+        {/* ToastContainer for global toast notifications */}
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light" // You can set 'light', 'dark', or 'colored'
+        />
       </body>
     </html>
   );

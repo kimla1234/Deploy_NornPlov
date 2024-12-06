@@ -1,49 +1,76 @@
-import { ChatBubble, ChatBubbleAvatar, ChatBubbleMessage } from '@/src/components/ui/chat/chat-bubble'
-import { ChatMessageList } from '@/src/components/ui/chat/chat-message-list'
-import React from 'react'
-import { ChatInput } from '@/src/components/ui/chat/chat-input'
-import { Send} from 'lucide-react'
+'use client';
 
-export default function page() {
-    return (
-        <div className='w-full'>
+import { useState, useEffect } from 'react';
+import { DynamicChatComponent } from '@/src/components/ui/chat/DynamicChatComponent';
+import { AppSidebar } from '@/src/components/ui/app-sidebar';
 
-            <ChatMessageList>
-                <ChatBubble variant='sent'>
-                    <ChatBubbleAvatar fallback='KH' />
-                    <ChatBubbleMessage variant='sent'>
-                        Hello, how has your day been? I hope you are doing well.
-                    </ChatBubbleMessage>
-                </ChatBubble>
+type Message = {
+  id: number;
+  variant: 'received' | 'sent';
+  avatar: string | null;
+  message: string;
+};
 
-                <ChatBubble variant='received'>
-                    <ChatBubbleAvatar fallback='AI' src='/chat/ai.png' />
-                    <ChatBubbleMessage variant='received'>
-                        Hi, I am doing well, thank you for asking. How can I help you today?
-                    </ChatBubbleMessage>
-                </ChatBubble>
+export default function ChatApp() {
+  const [chatData, setChatData] = useState<{ [key: number]: Message[] }>({});
+  const [selectedChatId, setSelectedChatId] = useState<number | null>(null);
+  const [nextChatId, setNextChatId] = useState(1); // Tracks the ID for the next new chat
 
-                <ChatBubble variant='received'>
-                    <ChatBubbleAvatar fallback='AI' src='/chat/ai.png ' />
-                    <ChatBubbleMessage isLoading />
-                </ChatBubble>
+  // Auto-create a new chat on first visit
+  useEffect(() => {
+    if (Object.keys(chatData).length === 0) {
+      createNewChat();
+    }
+  }, []);
 
-                <form
-                    className="relative rounded-full border bg-background focus-within:ring-1 focus-within:ring-ring p-1 flex items-center"
-                >
-                    <ChatInput
-                        placeholder="Type your message here..."
-                        className="min-h-12 resize-none  bg-background border-0 p-3 shadow-none  "
-                    />
-                    <div
-                        
-                        className="p-4 bg-primary rounded-full "
-                    >
-                        <Send size={18} color='#ffffff' />
-                    </div>
-                </form>
-            </ChatMessageList>
-        </div>
+  // Function to create a new chat
+  const createNewChat = () => {
+    const newChatId = nextChatId;
+    setChatData((prevData) => ({
+      ...prevData,
+      [newChatId]: [
+        {
+          id: Date.now(),
+          variant: 'received',
+          avatar: '/chat/ai.png',
+          message: `Welcome to Chat ${newChatId}! How can I assist you today?`,
+        },
+      ],
+    }));
+    setSelectedChatId(newChatId); // Auto-select the new chat
+    setNextChatId((prevId) => prevId + 1); // Increment the next chat ID
+  };
 
-    )
+  // Function to update messages for a specific chat
+  const updateMessages = (chatId: number, newMessage: Message) => {
+    setChatData((prevData) => ({
+      ...prevData,
+      [chatId]: [...(prevData[chatId] || []), newMessage],
+    }));
+  };
+
+  return (
+    <div >
+      {/* Sidebar */}
+      <AppSidebar
+        chatData={chatData}
+        selectedChatId={selectedChatId}
+        setSelectedChatId={setSelectedChatId}
+      />
+
+      {/* Chat Content */}
+      <div >
+        {selectedChatId ? (
+          <DynamicChatComponent
+            messages={chatData[selectedChatId] || []}
+            updateMessages={(newMessage) => updateMessages(selectedChatId, newMessage)}
+          />
+        ) : (
+          <p>Please select a chat from the sidebar.</p>
+        )}
+      </div>
+
+    </div>
+
+  );
 }

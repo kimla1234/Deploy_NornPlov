@@ -3,10 +3,10 @@
       "title": "តេស្តវាយតម្លៃតាមគុណតម្លៃ",
       "desc": "យល់ដឹងពីគុណតម្លៃការងាររបស់អ្នកតាមរយះSchwartz Value Theory  បង្កើតឡើងដោយលោក Shalom​​ Schwartz  ",
       "buttonText": "ចាប់ផ្តើមតេស្ត",
-      "route": "value-test"
+      "route": "value"
     },
 
-    "valueTestintroKh": {
+    "introKh": {
       "title": "តេស្តវាយតម្លៃតាម​",
       "highlight": "គុណតម្លៃ",
       "description": "ដោយផ្អែកលើប្រភេទតេស្តនេះ អ្នកនឹងទទួលបានលទ្ធផលពីគុណតម្លៃរបស់អ្នកតាមរយះ Schwartz Value Theory បង្កើតឡើងដោយលោក Shalom​​ Schwartz  និងការណែនាំពីអាជីពការងារ ជំនាញដែលគួរជ្រើសរើសកាន់តែប្រសើរជាងមុន។"
@@ -75,6 +75,22 @@
     }
     
 
-  ]
+  ],
+
+  "Recommendation": {
+      "jobTitle": "Teacher / Trainer",
+      "jobdesc": "A Teacher/Trainer educates and inspires learners by delivering engaging lessons or training sessions tailored to their needs. They create structured plans, assess progress, and provide feedback to ensure effective skill and ...",
+      "majors": [
+        "Computer Science",
+        "Software Engineering",
+        "Information Technology"
+      ],
+      "unis": [
+        "Institute of science and technology advanced development",
+        "ITC",
+        "CADT"
+      ]
+      
+    }
 
 }
