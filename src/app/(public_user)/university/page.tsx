@@ -80,7 +80,7 @@ export default function Page() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:gap-4 md:gap-4 gap-2">
               <Select
                 options={universityOptions}
-                placeholder="សាកលវិទ្យាល័យ"
+                placeholder="សាកលវិទ្យាល័យរដ្ឋ"
                 value={selectedUniversity}
                 onChange={handleUniversityChange}
                 className="rounded-full"
