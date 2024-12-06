@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "@/src/app/globals.css";
 import "../app/globals.css";
 import { Inter, Suwannaphum } from "next/font/google";
-import NoInternet from "./no-internet";
+
 
 const suwannaphum = Suwannaphum({
   subsets: ["khmer"],
@@ -26,8 +26,6 @@ export default function PublicUserLayout({
     return (
       <html lang="en">
       <body className={`${suwannaphum.className} ${inter} antialiased`}>
-        {/* No Internet page will be shown when the user is offline */}
-        <NoInternet/>
         <main className="w-full"> {children}</main>
       </body>
     </html>

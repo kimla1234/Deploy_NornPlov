@@ -4,7 +4,6 @@ import "../globals.css";
 import { Inter, Suwannaphum } from "next/font/google";
 import NavbarPage from "@/src/components/Navbar/NavbarPage";
 import FooterPage from "@/src/components/Footer/FooterPage";
-import NoInternet from "../no-internet"; // Import your custom No Internet page component
 
 const suwannaphum = Suwannaphum({
   subsets: ["khmer"],
@@ -28,8 +27,6 @@ export default function PublicUserLayout({
     return (
       <html lang="en">
       <body className={`${suwannaphum.className} ${inter} antialiased`}>
-        {/* No Internet page will be shown when the user is offline */}
-        <NoInternet />
         <NavbarPage/>
         <main className="w-full"> {children}</main>
         <FooterPage/>
