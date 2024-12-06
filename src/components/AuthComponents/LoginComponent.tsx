@@ -53,7 +53,9 @@ const LoginComponent = () => {
 
       
       if (!response.ok) {
-        throw new Error('Failed to login'); // Now uses the native Error class
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to login');
+        // throw new Error('Failed to login'); // Now uses the native Error class
       }
   
       const data = await response.json();
@@ -79,17 +81,27 @@ const LoginComponent = () => {
 
   return (
     <section className="w-full h-full flex justify-center items-center ">
-        <div className='w-[90%] h-[90%] sm:w-[75%] sm:h-[90%] md:w-[95%] md:h-[90%] xl:w-[85%] xl:h-[85%] m-auto border-1 border-slate-200 bg-white rounded-xl'>
-        <div className="px-6 sm:px-8 md:px-6 xl:px-10">
-            <div className="right-9 top-11 sm:right-28 sm:top-12 md:right-5 md:top-10 lg:right-7 xl:right-20 absolute xl:top-16">
-            <button
-                className="text-2xl text-gray-500 hover:text-gray-700"
-                onClick={() => console.log('Close button clicked')}
-            >
-                <IoCloseSharp />
-            </button>
-            </div>
-        <div className=" h-fit mt-20 xl:mt-24">
+        <div className='w-[90%] h-[90%] sm:w-[75%] sm:h-[90%] md:w-[95%] md:h-[90%] xl:w-[90%] xl:h-[85%] m-auto '>
+        <div className="px-6 sm:px-8 md:px-6 xl:px-8">
+          <div className=" flex justify-between items-center">
+             <Link href="/">
+             <Image
+                      src="/assets/logo-test.png"
+                      width={24} height={24}
+                        alt="Logo Image"
+                      />
+             </Link>
+                <div className="">
+                <button
+                    className="text-2xl text-gray-500 hover:text-gray-700"
+                    onClick={() => console.log('Close button clicked')}
+                >
+                    <IoCloseSharp />
+                </button>
+                </div>
+          </div>
+            
+        <div className="mt-20">
           <h1 className="text-4xl font-bold text-primary">Login</h1>
           <Formik
             initialValues={initialValues}
@@ -171,7 +183,7 @@ const LoginComponent = () => {
                 </div>
                 {/* Don't have accoun? Register */}
                 <div className='mt-4 text-center text-textprimary '>
-                    <span>Dont't have account yet?<Link href="/register" className='text-primary hover:underline hover:font-semibold pl-1.5'>Register</Link></span>
+                    <span>Dont&apos;t have account yet?<Link href="/register" className='text-primary hover:underline hover:font-semibold pl-1.5'>Register</Link></span>
                 </div>
               </Form>
               

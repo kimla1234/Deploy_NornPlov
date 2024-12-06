@@ -1,14 +1,17 @@
 'use client';
-import React from 'react';
+import React, { useState,useEffect } from "react";
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import { IoCloseSharp } from 'react-icons/io5';
 import Label from './LabelComponent';
-import DynamicField from './AuthField';
 import ErrorDynamic from './ErrorComponent';
 import PasswordField from './PasswordField';
-import Link from 'next/link';
 import Button from './ButtonComponentForAuth'; // Adjust the import path as needed
+import { useResetPasswordMutation } from '@/src/redux/service/auth';
+import { useRouter } from "next/navigation";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {useAppSelector } from '@/src/redux/hooks';
 
 type ValueTypes = {
     new_password: string;
@@ -21,8 +24,6 @@ const initialValues: ValueTypes = {
 };
 const strongPasswordRegex = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%^&*]).{8,}$");
 const validationSchema = Yup.object().shape({
-    username:Yup.string().max(60,"ឈ្មោះរបស់អ្នកវែងពេក").required("អ្នកត្រូវបញ្ជូលឈ្មោះរបស់អ្នក"),
-    email: Yup.string().email('Invalid email').required('អ្នកត្រូវបញ្ជូលអ៉ីម៉ែលរបស់អ្នក'),
     new_password: Yup.string()
      .min(8, "New Password is too short, At lease 8 characters")
     .matches(strongPasswordRegex, "New Password must contain at least one upper case English letter, one lower case English letter and one special character")
@@ -33,6 +34,56 @@ const validationSchema = Yup.object().shape({
 });
 
 const ResetPasswordComponent = () => {
+    const email = useAppSelector((state) => state.verify.email); // Get email from Redux
+    const reset_code = useAppSelector((state) => state.verify.reset_code); // Get reset code from Redux
+    const [isLoading, setIsLoading] = useState(false);
+    const [resetPassword] = useResetPasswordMutation(); // API call for resetting the password
+    const router = useRouter();
+    console.log("Email from Redux: ", email)
+    console.log("Reset code from Redux: ", reset_code)
+    useEffect(() => {
+        if (!email || !reset_code) {
+          console.error("Email or reset code is missing:", { email, reset_code });
+          toast.error("Missing email or reset code. Redirecting to Forgot Password.");
+          setTimeout(() => {
+            router.push("/forgot-password");
+          }, 3000);
+        }
+      }, [email, reset_code, router]);
+      
+    const hanldeResetPassword = async(values:ValueTypes)=>{
+        if (!email || !reset_code) {
+            toast.error("Missing email or reset code. Redirecting to Forgot Password.");
+            router.push("/forgot-password");
+            return;
+          }
+
+        setIsLoading(true);
+        try{
+            const { new_password, confirm_password } = values;
+            // Call the reset password API
+            const response = await resetPassword({ email, reset_code, new_password, confirm_password }).unwrap();
+            toast.success(response.message || "Password reset successfully!");
+            console.log("Password Reset Response:", response);
+            // Redirect to login page
+            setTimeout(() => {
+            router.push("/login");
+            });
+
+        }catch(error){
+            console.error("Reset Password Error:", error);
+           
+            if (error && typeof error === "object" && "status" in error && "data" in error) {
+            const typedError = error as { status: number; data: { detail?: string; message?: string } };
+            toast.error(typedError.data?.detail || "Failed to reset password. Please try again.");
+            } else {
+                toast.error("An unknown error occurred.");
+            }
+        }finally {
+            setIsLoading(false);
+          }
+    }
+
   return (
     <section className="w-full h-screen flex justify-center items-center ">
         <div className='w-[90%] h-[90%] sm:w-[75%] sm:h-[90%] md:w-[95%] md:h-[90%] xl:w-[85%] xl:h-[68%] m-auto border-1 border border-slate-100 rounded-xl'>
@@ -52,21 +103,22 @@ const ResetPasswordComponent = () => {
                         initialValues={initialValues}
                         validationSchema={validationSchema}
                         onSubmit={(values, { setSubmitting }) => {
+                        hanldeResetPassword(values);
                         console.log('Form Submitted:', values);
                         setSubmitting(false); // Simulate a submission delay
                     }}
                     >
-                    {({ isSubmitting }) => (
+                    {({}) => (
                         <Form>
                             {/* Form For Register */}
                             <div className="space-y-6 mt-10">
                                 {/* Password Field */}
                                 <div>
-                                    <Label htmlFor="new_password" text="ពាក្យសម្ងាត់ថ្មី" required />
+                                    <Label htmlFor="new_password" text="New Password" required />
                                     <PasswordField
                                         name="new_password"
                                         id="new_password"
-                                        placeholder="បញ្ចូលពាក្យសម្ងាត់ថ្មី"
+                                        placeholder="Input New Password"
                                         className="custom-class mt-1"
                                     />
                                     <ErrorDynamic  name="new_password" component="div" />
@@ -74,11 +126,11 @@ const ResetPasswordComponent = () => {
 
                                 {/* Confirm Password Field */}
                                 <div>
-                                    <Label htmlFor="confirm_password" text="បញ្ជាក់ពាក្យសម្ងាត់ថ្មី" required />
+                                    <Label htmlFor="confirm_password" text="Confirm Password" required />
                                     <PasswordField
                                         name="confirm_password"
                                         id="confirm_password"
-                                        placeholder="បញ្ជាក់ពាក្យសម្ងាត់ថ្មីរបស់អ្នក"
+                                        placeholder="Input Confirm Password"
                                         className="custom-class mt-1"
                                     />
                                     <ErrorDynamic  name="confirm_password" component="div" />
@@ -90,8 +142,8 @@ const ResetPasswordComponent = () => {
                             <div className="mt-8">
                                 <Button
                                     type="submit"
-                                    text="រួចរាល់"
-                                    isLoading={isSubmitting} // Show loading spinner when the form is submitting
+                                    text="Chnage Password"
+                                    isLoading={isLoading}
                                     className="w-full bg-primary hover:bg-primary text-white font-medium border-collapse"
                                 />
                             </div>
@@ -100,6 +152,7 @@ const ResetPasswordComponent = () => {
                     )}
            
                     </Formik>
+                    <ToastContainer />
                 </div>
             </div>
         </div>

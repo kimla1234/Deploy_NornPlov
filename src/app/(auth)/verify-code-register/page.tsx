@@ -4,7 +4,7 @@ import OTPComponent from "@/src/components/AuthComponents/OTPComponent";
 export default function page() {
   return (
     <section className="w-full h-screen flex items-center justify-center m-0">
-       <div className="w-[50%]">
+       <div className="">
             <OTPComponent/>
        </div>
     </section>

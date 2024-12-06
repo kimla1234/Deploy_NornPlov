@@ -1,4 +1,4 @@
-// 'use client'
+// 'use client';
 // import React from 'react';
 // import { Formik, Form } from 'formik';
 // import FieldProfile from './FieldProfile';
@@ -14,17 +14,12 @@
 //         name: '',
 //         dateOfBirth: '',
 //         gender: '',
-//         bio: '',
-//         preferences: {
-//           email: false,
-//           sms: false,
-//         },
 //       }}
 //       onSubmit={handleSubmit}
 //     >
 //       {() => (
 //         <Form className="space-y-6">
-//           {/* Text Field */}
+//           {/* Name Field */}
 //           <div>
 //             <label htmlFor="name" className="block text-sm font-medium text-gray-700">
 //               Name
@@ -68,19 +63,6 @@
 //             />
 //           </div>
 
-//           {/* Textarea Field */}
-//           <div>
-//             <label htmlFor="bio" className="block text-sm font-medium text-gray-700">
-//               Bio
-//             </label>
-//             <FieldProfile
-//               type="textarea"
-//               name="bio"
-//               id="bio"
-//               placeholder="Tell us about yourself"
-//               rows={5}
-//             />
-//           </div>
 //           {/* Submit Button */}
 //           <button
 //             type="submit"
@@ -96,13 +78,21 @@
 
 // export default ProfileForm;
 
+
 'use client';
 import React from 'react';
 import { Formik, Form } from 'formik';
 import FieldProfile from './FieldProfile';
 
+// Define type for form values
+type ProfileFormValues ={
+  name: string;
+  dateOfBirth: string;
+  gender: string;
+}
+
 const ProfileForm = () => {
-  const handleSubmit = (values: any) => {
+  const handleSubmit = (values: ProfileFormValues) => {
     alert(JSON.stringify(values, null, 2));
   };
 

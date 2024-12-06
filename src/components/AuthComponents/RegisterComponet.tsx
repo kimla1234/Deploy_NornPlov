@@ -1,219 +1,224 @@
 'use client';
 import React, { useState } from "react";
-import { useAppDispatch,useAppSelector } from '@/src/redux/hooks';
+import { useAppDispatch } from '@/src/redux/hooks';
 import 'react-toastify/dist/ReactToastify.css';
-import { Flip, ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import * as Yup from 'yup';
-import { Formik, Form } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import { IoCloseSharp } from 'react-icons/io5';
 import Label from './LabelComponent';
 import DynamicField from './AuthField';
 import ErrorDynamic from './ErrorComponent';
 import PasswordField from './PasswordField';
 import Link from 'next/link';
-import Button from './ButtonComponentForAuth'; // Adjust the import path as needed
+import Button from './ButtonComponentForAuth';
 import { useRegisterMutation } from '@/src/redux/service/auth';
 import { setEmail } from "@/src/redux/feature/verify/verifySlice";
-import { useRouter } from "next/navigation"; // For routing
+import { useRouter } from "next/navigation";
+import Image from 'next/image';
 
 type ValueTypes = {
-    username:string;
-    email: string;
-    password: string;
-    confirm_password:string;
+  username: string;
+  email: string;
+  password: string;
+  confirm_password: string;
+  terms: boolean; // New field for terms and conditions
 };
 
 const initialValues: ValueTypes = {
-    username: '',
-    email: '',
-    password: '',
-    confirm_password: '',
+  username: '',
+  email: '',
+  password: '',
+  confirm_password: '',
+  terms: false,
 };
+
 const strongPasswordRegex = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%^&*]).{8,}$");
 const validationSchema = Yup.object().shape({
-    username:Yup.string().max(60,"ឈ្មោះរបស់អ្នកវែងពេក").required("អ្នកត្រូវបញ្ជូលឈ្មោះរបស់អ្នក"),
-    email: Yup.string().email('Invalid email').required('អ្នកត្រូវបញ្ជូលអ៉ីម៉ែលរបស់អ្នក'),
-    password: Yup.string()
-     .min(8, "Password is too short, At lease 8 characters")
-    .matches(strongPasswordRegex, "Password must contain at least one upper case English letter, one lower case English letter and one special character")
+  username: Yup.string().max(60, "Name is too long").required("Name is required"),
+  email: Yup.string().email('Invalid email').required('Email is required'),
+  password: Yup.string()
+    .min(8, "Password is too short, at least 8 characters")
+    .matches(strongPasswordRegex, "Password must contain at least one uppercase letter, one lowercase letter, and one special character")
     .required("Password is required"),
-    confirm_password: Yup.string()
-    .oneOf([Yup.ref("password")], "Password must match")
+  confirm_password: Yup.string()
+    .oneOf([Yup.ref("password")], "Passwords must match")
     .required("Confirm password is required"),
+  terms: Yup.bool().oneOf([true], "You must accept the terms and conditions"), // Validation for terms
 });
 
 const RegisterComponent = () => {
-    const [isLoading, setIsLoading] = useState(false); // Loading state
-    const dispatch = useAppDispatch();
-    const [register,{status,error}] = useRegisterMutation(); // Mutation for Register
-    const router = useRouter(); // Use router for navigation
+  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useAppDispatch();
+  const [register] = useRegisterMutation();
+  const router = useRouter();
 
+  const handleSubmit = async (values: ValueTypes) => {
+    setIsLoading(true);
+    try {
+      const { username, email, password, confirm_password } = values;
+      const response = await register({ data: { username, email, password, confirm_password } }).unwrap();
+      console.log("Registration Response:", response);
 
-    const handleSubmit = async (user:ValueTypes) => {
-        setIsLoading(true); // Start loading
-        try{
-            const response = await register({ data: user }).unwrap(); // Call the register mutation
-            console.log("Registration Response:", response); // Log the API response for debugging
-            
-        // Dispatch email to Redux and show a success message
-        dispatch(setEmail(user.email));
-        console.log("Email saved to Redux:", user.email); // Debugging line
-        toast.success(response.message || "Registered Successfully!", { autoClose: 2000 });
-        setTimeout(() => {
-            router.push("/verify-code-register");
-        }, 3000);
-        // Redirect to OTP verification page
-        // router.push("/verify-code-register");
-        }catch(error:any){
-            console.error("Error during registration:", error); // Log the full error for debugging
-             // Check if the error is due to an already registered email
-        if (error.status === 400 && error?.data?.detail === "Email already registered.") {
-            toast.error("This email is already registered. Please use a different email or login.");
-        } else if (error?.data?.message) {
-            toast.error(error.data.message); // Show the API error message if available
+      // Dispatch email to Redux and show a success message
+      dispatch(setEmail(email));
+      toast.success(response.message || "Registered Successfully!", { autoClose: 2000 });
+
+      // Redirect to OTP verification page
+      setTimeout(() => {
+        router.push("/verify-code-register");
+      });
+    } catch (error: unknown) {
+      console.error("Error during registration:", error);
+
+      // Handle API errors
+      if (error && typeof error === 'object' && 'status' in error && 'data' in error) {
+        const typedError = error as { status: number; data: { detail?: string; message?: string } };
+        if (typedError.status === 400 && typedError.data.detail === "Email already registered.") {
+          toast.error("This email is already registered. Please use a different email or login.");
+        } else if (typedError.data?.message) {
+          toast.error(typedError.data.message);
         } else {
-            // Fallback for any other error
-            toast.error("An error occurred during registration. Please try again.");
+          toast.error("An error occurred during registration. Please try again.");
         }
-            // if (error?.data?.message) {
-            //     // Show specific error message from the server
-            //     toast.error(error.data.message);
-            // } else if (error.status === 409) {
-            //     // Handle conflict errors (e.g., duplicate email or username)
-            //     toast.error("Username or email already exists. Please choose another one.");
-            // } else {
-            //     // General error fallback
-            //     toast.error("An error occurred during registration.");
-            // }
-        }finally {
-            setIsLoading(false); // Reset loading state to false
-          }
-
+      } else {
+        toast.error("An unknown error occurred.");
+      }
+    } finally {
+      setIsLoading(false);
     }
+  };
 
   return (
-    <section className="w-full h-screen flex justify-center items-center ">
-        <div className='w-[90%] h-[97%] sm:w-[75%] sm:h-[97%] md:w-[95%] md:h-[98%] xl:w-[85%] xl:h-[98%] m-auto border-1 border border-slate-100 rounded-xl md:border-none'>
-            <div className="px-6 sm:px-8 md:px-6 xl:px-10">
-                <div className="right-9 top-5 sm:right-24 sm:top-5 md:right-5 md:top-3 lg:right-5 xl:right-16 absolute xl:top-3">
-                    <button
-                    className="text-2xl text-gray-500 hover:text-gray-700"
-                    onClick={() => console.log('Close button clicked')}
+    <section className="w-full h-screen flex justify-center items-center">
+      <div className="w-[90%] h-[97%] sm:w-[75%] sm:h-[97%] md:w-[95%] md:h-[98%] xl:w-[85%] xl:h-[98%] m-auto">
+        <div className="px-6 sm:px-8 md:px-6 xl:px-10">
+          <div className="flex justify-between items-center mt-3">
+            <Link href="/">
+              <Image src="/assets/logo-test.png" width={24} height={24} alt="Logo Image" />
+            </Link>
+            <div>
+              <button
+                className="text-2xl text-gray-500 hover:text-gray-700"
+                onClick={() => console.log('Close button clicked')}
+              >
+                <IoCloseSharp />
+              </button>
+            </div>
+          </div>
+          <div className="h-fit mt-10 md:mt-11 xl:mt-8">
+            <h1 className="text-4xl font-bold text-primary">Register</h1>
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={(values, { setSubmitting }) => {
+                if (!values.terms) {
+                  toast.error("You must accept the terms and conditions");
+                  setSubmitting(false);
+                  return;
+                }
+                handleSubmit(values);
+                setSubmitting(false);
+              }}
+            >
+              {({ errors, touched }) => (
+                <Form>
+                  <div className="space-y-4 mt-3">
+                    <div>
+                      <Label htmlFor="username" text="Name" required />
+                      <DynamicField
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="Input Your Username"
+                      />
+                      <ErrorDynamic name="username" component="div" />
+                    </div>
+                    <div>
+                      <Label htmlFor="email" text="Email" required />
+                      <DynamicField
+                        type="text"
+                        name="email"
+                        id="email"
+                        placeholder="Input Your Email"
+                      />
+                      <ErrorDynamic name="email" component="div" />
+                    </div>
+                    <div>
+                      <Label htmlFor="password" text="Password" required />
+                      <PasswordField
+                        name="password"
+                        id="password"
+                        placeholder="Input Your Password"
+                        className="custom-class mt-1"
+                      />
+                      <ErrorDynamic name="password" component="div" />
+                    </div>
+                    <div>
+                      <Label htmlFor="confirm_password" text="Confirm Password" required />
+                      <PasswordField
+                        name="confirm_password"
+                        id="confirm_password"
+                        placeholder="Input Your Confirm Password"
+                        className="custom-class mt-1"
+                      />
+                      <ErrorDynamic name="confirm_password" component="div" />
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-2 mt-3">
+                    <Field type="checkbox" id="terms" name="terms" />
+                    <label
+                      htmlFor="terms"
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-textprimary"
                     >
-                        <IoCloseSharp />
-                    </button>
-                </div>
-                <div className="h-fit mt-10 md:mt-11 xl:mt-10">
-                    <h1 className="text-4xl font-bold text-primary">បង្កើតគណនីថ្មី</h1>
-                    <Formik
-                        initialValues={initialValues}
-                        validationSchema={validationSchema}
-                        onSubmit={(values, { setSubmitting }) => {
-                        handleSubmit(values);    
-                        console.log('Form Submitted:', values);
-                        setSubmitting(false); // Simulate a submission delay
-                    }}
-                    >
-                    {() => (
-                        <Form>
-                            {/* Form For Register */}
-                            <div className="space-y-4 mt-5">
-                                {/* username Field */}
-                                <div>
-                                        <Label htmlFor="username" text="ឈ្មោះ" required />
-                                        <DynamicField
-                                            type="text"
-                                            name="username"
-                                            id="username"
-                                            placeholder="បញ្ចូលឈ្មោះរបស់អ្នក"
-                                        />
-                                        <ErrorDynamic  name="username" component="div" />
-                                    </div>
-                                {/* Email Field */}
-                                    <div>
-                                        <Label htmlFor="email" text="អ៉ីម៉ែល" required />
-                                        <DynamicField
-                                            type="text"
-                                            name="email"
-                                            id="email"
-                                            placeholder="បញ្ចូលអ៉ីម៉ែលរបស់អ្នក"
-                                        />
-                                        <ErrorDynamic  name="email" component="div" />
-                                    </div>
-
-                                {/* Password Field */}
-                                <div>
-                                    <Label htmlFor="password" text="ពាក្យសម្ងាត់" required />
-                                    <PasswordField
-                                        name="password"
-                                        id="password"
-                                        placeholder="បញ្ចូលពាក្យសម្ងាត់របស់អ្នក"
-                                        className="custom-class mt-1"
-                                    />
-                                    <ErrorDynamic  name="password" component="div" />
-                                </div>
-
-                                {/* Confirm Password Field */}
-                                <div>
-                                    <Label htmlFor="confirm_password" text="បញ្ជាក់ពាក្យសម្ងាត់" required />
-                                    <PasswordField
-                                        name="confirm_password"
-                                        id="confirm_password"
-                                        placeholder="បញ្ចូលពាក្យសម្ងាត់របស់អ្នក"
-                                        className="custom-class mt-1"
-                                    />
-                                    <ErrorDynamic name="confirm_password" component="div" />
-                                </div>
-
+                      Accept terms and conditions
+                    </label>
+                    {errors.terms && touched.terms && (
+                      <div className="text-red-500 text-sm ">{errors.terms}</div>
+                    )}
+                  </div>
+                  <div className="mt-6">
+                    <Button
+                      type="submit"
+                      text="Register"
+                      isLoading={isLoading}
+                      className="w-full bg-primary hover:bg-primary text-white font-medium border-collapse"
+                    />
+                  </div>
+                  
+                             {/* OR Divider */}
+                             <div className="flex items-center justify-center space-x-4 my-4">
+                                 <span className="w-1/2 border-b border-gray-300"></span>
+                                 <span className="text-sm text-gray-500">OR</span>
+                                 <span className="w-1/2 border-b border-gray-300"></span>
                             </div>
-
-                            {/* Submit Button */}
-                            <div className="mt-6">
-                                <Button
-                                    type="submit"
-                                    text="បង្កើតគណនី"
-                                    isLoading={isLoading} // Show loading spinner when the form is submitting
-                                    className="w-full bg-primary hover:bg-primary text-white font-medium border-collapse"
-                                />
-                            </div>
-
-                            {/* OR Divider */}
-                            <div className="flex items-center justify-center space-x-4 my-4">
-                                <span className="w-1/2 border-b border-gray-300"></span>
-                                <span className="text-sm text-gray-500">ឬ</span>
-                                <span className="w-1/2 border-b border-gray-300"></span>
-                            </div>
-
                             {/* Google Button */}
                             <div className="mt-4">
-                                <Button
+                                 <Button
                                     type="button"
-                                    text="ភ្ជាប់ជាមួយ Google"  
+                                    text="Continue with Google"  
                                     onClick={() => console.log('Continue with Google clicked')}
                                     icon={
-                                        <img
-                                        src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                                        alt="Google"
-                                        className="w-5 h-5"
-                                        />
+                                        <Image
+                                        src="/assets/google.png"
+                                        width={24} height={24}
+                                         alt="Google icon"
+                                       />
                                     }
-                                    className="w-full border-2 border-primary  text-textprimary hover:bg-primary hover:text-white"
+                                    className="w-full border-2 border-primary  text-textprimary"
                                 />
                             </div>
-                            {/* Don't have accoun? Register */}
-                            <div className='mt-4 text-center text-textprimary '>
-                                <span>មានគណនីរួចហើយ?<Link href="/register" className='text-primary hover:underline hover:font-semibold pl-1.5'>ចូលគណនី</Link></span>
-                            </div>
-                        </Form>
-              
-                    )}
-           
-                    </Formik>
-                    <ToastContainer />
-                </div>
-            </div>
+                             {/* Don't have accoun? Register */}
+                             <div className='mt-4 text-center text-textprimary '>
+                                 <span>Already have account?<Link href="/login" className='text-primary hover:underline hover:font-semibold pl-1.5'>Login</Link></span>
+                             </div>
+                </Form>
+              )}
+            </Formik>
+            <ToastContainer />
+          </div>
         </div>
-      
+      </div>
     </section>
   );
 };
