@@ -73,7 +73,7 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
   const displayedUniversities = universities.slice(0, limit);
 
   return (
-    <div className="mt-8 mx-auto grid w-auto auto-rows-fr grid-cols-1 lg:gap-8 md:gap-8 gap-4 sm:mt-12 lg:grid-cols-2">
+    <div className="lg:mt-8 md:mt-5 mt-4 mx-auto grid w-auto auto-rows-fr grid-cols-1 lg:gap-8 md:gap-3 gap-3  lg:grid-cols-2 ">
       {displayedUniversities.map((university, index) => (
         <div key={index}>
           <a
