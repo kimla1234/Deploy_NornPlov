@@ -57,7 +57,6 @@ export default function Page() {
           <h1 className="text-2xl md:text-4xl lg:text-5xl bordered-text font-bold text-white text-center lg:mb-8 md:mb-8 mb-2">
             ស្វែងរកគ្រឹះស្ថានសិក្សាទៅកម្ពុជា
           </h1>
-
           <div className="lg:max-w-4xl md:max-w-xl max-w-4xl mx-auto lg:space-y-4 md:space-y-4 space-y-2 ">
             {/* Search input */}
             <div className="flex">
@@ -80,7 +79,7 @@ export default function Page() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:gap-4 md:gap-4 gap-2">
               <Select
                 options={universityOptions}
-                placeholder="សាកលវិទ្យាល័យ"
+                placeholder="សាកលវិទ្យាល័យរដ្ឋ"
                 value={selectedUniversity}
                 onChange={handleUniversityChange}
                 className="rounded-full"
