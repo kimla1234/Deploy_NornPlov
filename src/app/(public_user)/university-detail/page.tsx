@@ -56,7 +56,7 @@ Button1.displayName = "Button1";
 export default function Page() {
   const [isOpen, setIsOpen] = React.useState(false);
   const courses = [
-    { title: "គណិតវិទ្យា", price: "$800 - $1200", duration: "សិក្សា 4 ឆ្នាំ" },
+    { title: "Math", price: "$800 - $1200", duration: "សិក្សា 4 ឆ្នាំ" },
     { title: "រូបវិទ្យា", price: "$800 - $1200", duration: "សិក្សា 4 ឆ្នាំ" },
     { title: "គីមីវិទ្យា", price: "$800 - $1200", duration: "សិក្សា 4 ឆ្នាំ" },
     { title: "ជីវវិទ្យា", price: "$800 - $1200", duration: "សិក្សា 4 ឆ្នាំ" },
