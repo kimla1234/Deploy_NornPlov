@@ -28,9 +28,6 @@ const NotFound = () => {
             <div className="lg:text-2xl md:text-2xl text-lg  text-textprimary">
               សុំទោស! សូមចូលទៅកាន់គេហទំព័រដើមដើម្បីទទួលបាន កន្លែងដែលអ្នកចង់ទៅ។
             </div>
-            <div className="lg:text-2xl md:text-2xl text-lg  text-textprimary">
-              សុំទោស! សូមចូលទៅកាន់គេហទំព័រដើមដើម្បីទទួលបាន កន្លែងដែលអ្នកចង់ទៅ។
-            </div>
             <Link
               href="/"
               className="flex items-center bg-primary rounded-xl w-40 justify-center h-12"
