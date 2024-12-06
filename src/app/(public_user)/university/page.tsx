@@ -1,7 +1,6 @@
 "use client";
 import CardUniversity from "@/src/components/ui/CardUniversity";
 import React, { useState } from "react";
-import { BiRightArrowAlt } from "react-icons/bi";
 import { FaSearch } from "react-icons/fa";
 import Select from "react-select";
 

@@ -50,7 +50,7 @@ function OTPValidation({ length = 6, onComplete }: OTPValidationProps) {
   };
 
   return (
-    <div className="flex gap-6">
+    <div className="flex gap-4 sm:gap-6">
       {Array.from({ length }).map((_, index) => (
         <input
           key={index}
@@ -59,7 +59,7 @@ function OTPValidation({ length = 6, onComplete }: OTPValidationProps) {
           ref={(el) => {
             inputsRef.current[index] = el; // Store reference in the array
           }}
-          className="w-14 h-14 text-center text-xl border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
+          className="w-12 h-12 sm:w-14 sm:h-14 text-center text-xl border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
           onChange={(e) => handleInputChange(e, index)}
           onPaste={handlePaste}
           onKeyDown={(e) => handleKeyDown(e, index)}

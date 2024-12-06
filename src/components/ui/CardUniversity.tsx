@@ -1,4 +1,5 @@
 import { BiRightArrowAlt } from "react-icons/bi";
+import Image from "next/image";
 
 export default function CardUniversity({ limit = 8 }: { limit?: number }) {
   const universities = [
@@ -7,7 +8,7 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
       englishName: "Royal University of Phnom Penh",
       address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
       major : "ព័ត៌មានវិទ្យា",
-      logo: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCck6y-Js7S_p525kcceN2rTwb0_KXMG7KC4FJvTSfunuwDIeAPx382aKePtMaNArv7oMCyAkzOnIyZTeeOqshCzWU98Uf-XXLqavVGPUwfFoZzCcsibJeLfjUlRTkS1kZVdkU9ksRqLc/s320/ITC+LOGO.gif",
+      logo: "/assets/itc.png",
       link: "#",
     },
     {
@@ -15,7 +16,7 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
       englishName: "Royal University of Phnom Penh",
       address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
       major : "ព័ត៌មានវិទ្យា",
-      logo: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCck6y-Js7S_p525kcceN2rTwb0_KXMG7KC4FJvTSfunuwDIeAPx382aKePtMaNArv7oMCyAkzOnIyZTeeOqshCzWU98Uf-XXLqavVGPUwfFoZzCcsibJeLfjUlRTkS1kZVdkU9ksRqLc/s320/ITC+LOGO.gif",
+      logo: "/assets/itc.png",
       link: "#",
     },
     {
@@ -23,7 +24,7 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
         englishName: "Royal University of Phnom Penh",
         address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
         major : "ព័ត៌មានវិទ្យា",
-        logo: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCck6y-Js7S_p525kcceN2rTwb0_KXMG7KC4FJvTSfunuwDIeAPx382aKePtMaNArv7oMCyAkzOnIyZTeeOqshCzWU98Uf-XXLqavVGPUwfFoZzCcsibJeLfjUlRTkS1kZVdkU9ksRqLc/s320/ITC+LOGO.gif",
+        logo: "/assets/itc.png",
         link: "#",
       },
       {
@@ -31,7 +32,7 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
         englishName: "Royal University of Phnom Penh",
         address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
         major : "ព័ត៌មានវិទ្យា",
-        logo: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCck6y-Js7S_p525kcceN2rTwb0_KXMG7KC4FJvTSfunuwDIeAPx382aKePtMaNArv7oMCyAkzOnIyZTeeOqshCzWU98Uf-XXLqavVGPUwfFoZzCcsibJeLfjUlRTkS1kZVdkU9ksRqLc/s320/ITC+LOGO.gif",
+        logo: "/assets/itc.png",
         link: "#",
       },
       {
@@ -39,7 +40,7 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
         englishName: "Royal University of Phnom Penh",
         address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
         major : "ព័ត៌មានវិទ្យា",
-        logo: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCck6y-Js7S_p525kcceN2rTwb0_KXMG7KC4FJvTSfunuwDIeAPx382aKePtMaNArv7oMCyAkzOnIyZTeeOqshCzWU98Uf-XXLqavVGPUwfFoZzCcsibJeLfjUlRTkS1kZVdkU9ksRqLc/s320/ITC+LOGO.gif",
+        logo: "/assets/itc.png",
         link: "#",
       },
       {
@@ -47,7 +48,7 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
         englishName: "Royal University of Phnom Penh",
         address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
         major : "ព័ត៌មានវិទ្យា",
-        logo: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCck6y-Js7S_p525kcceN2rTwb0_KXMG7KC4FJvTSfunuwDIeAPx382aKePtMaNArv7oMCyAkzOnIyZTeeOqshCzWU98Uf-XXLqavVGPUwfFoZzCcsibJeLfjUlRTkS1kZVdkU9ksRqLc/s320/ITC+LOGO.gif",
+        logo: "/assets/itc.png",
         link: "#",
       },
       {
@@ -55,7 +56,7 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
           englishName: "Royal University of Phnom Penh",
           address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
           major : "ព័ត៌មានវិទ្យា",
-          logo: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCck6y-Js7S_p525kcceN2rTwb0_KXMG7KC4FJvTSfunuwDIeAPx382aKePtMaNArv7oMCyAkzOnIyZTeeOqshCzWU98Uf-XXLqavVGPUwfFoZzCcsibJeLfjUlRTkS1kZVdkU9ksRqLc/s320/ITC+LOGO.gif",
+          logo: "/assets/itc.png",
           link: "#",
         },
         {
@@ -63,7 +64,7 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
           englishName: "Royal University of Phnom Penh",
           address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
           major : "ព័ត៌មានវិទ្យា",
-          logo: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCck6y-Js7S_p525kcceN2rTwb0_KXMG7KC4FJvTSfunuwDIeAPx382aKePtMaNArv7oMCyAkzOnIyZTeeOqshCzWU98Uf-XXLqavVGPUwfFoZzCcsibJeLfjUlRTkS1kZVdkU9ksRqLc/s320/ITC+LOGO.gif",
+          logo: "/assets/itc.png",
           link: "#",
         },
   ];
@@ -79,10 +80,12 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
             href={university.link}
             className="flex lg:p-6 md:p-6 p-2 h-50 w-full flex-row items-center bg-white border border-gray-100 shadow-sm rounded-2xl  md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
           >
-            <img
+            <Image
               className="object-cover lg:w-40 lg:h-40 md:w-40 md:h-40 w-24 h-24 mr-2 rounded-t-lg md:rounded-none md:rounded-s-lg"
               src={university.logo}
               alt={university.name}
+              width={200}
+              height={200}
             />
             <div className="flex flex-col justify-between w-full lg:p-2 md:p-2 p-0 leading-normal">
               <h1 className="lg:mb-2 md:mbb-2 mb-1 text-lg md:text-2xl lg:text-2xl  font-bold tracking-tight text-textprimary dark:text-white">

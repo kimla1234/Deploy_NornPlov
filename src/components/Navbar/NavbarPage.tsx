@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -18,8 +17,7 @@ const navLinks = [
 export default function NavbarPage() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const router = useRouter();
-  const [userUUID, setUserUUID] = useState("");
+  const [userUUID] = useState("");
 
   return (
     <div className="w-full bg-slate-50">

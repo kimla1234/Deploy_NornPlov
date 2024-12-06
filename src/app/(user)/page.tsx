@@ -6,7 +6,6 @@ import { GoArrowRight } from "react-icons/go";
 import { BiRightArrowAlt } from "react-icons/bi";
 import TeamProfilesHomePage from "@/src/components/ui/TeamProfilesHomePaage";
 import ProcessHomePage from "@/src/components/ui/ProcessHomePage";
-import FeedbackHomePage from "@/src/components/ui/FeedbackHomePage";
 
 // Define the types for the props
 interface FeatureCardProps {
@@ -15,7 +14,7 @@ interface FeatureCardProps {
   description: string; // Description of the feature
 }
 
-export default function Page() {
+export default function page() {
     
   return (
     <div className="w-full h-auto bg-white ">
@@ -164,7 +163,7 @@ function FeatureCard({ image, title, description }: FeatureCardProps) {
     <div className="flex flex-col items-center text-center p-4 rounded-lg ">
       {/* Fixed-size Image Container */}
       <div className="w-[180px] h-[180px] md:w-[200px] md:h-[200px] lg:w-[300px] lg:h-[300px]  mb-2">
-        <img src={image} alt={title} className="object-contain w-full h-full" />
+        <Image src={image} alt={title} width={200} height={200} className="object-contain w-full h-full" />
       </div>
       {/* Content */}
       <div className="lg:p-4 md:p-0 p-2 rounded-lg lg:w-90 md:w-78 w-90">

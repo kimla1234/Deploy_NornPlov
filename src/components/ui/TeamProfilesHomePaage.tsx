@@ -1,6 +1,7 @@
 import React from "react";
 import { Phone, Mail } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Button component
 const Button = React.forwardRef<
@@ -88,9 +89,11 @@ export default function TeamProfilesHomePage() {
         {profiles.map((profile, index) => (
           <Card key={index}>
             <div className="relative ">
-              <img
+              <Image
                 src={profile.image}
                 alt={`${profile.name} - ${profile.role}`}
+                width={200}
+                height={200}
                 className="object-cover w-full "
               />
             </div>

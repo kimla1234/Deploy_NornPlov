@@ -3,7 +3,7 @@ import { ErrorMessage as FormikErrorMessage } from 'formik';
 
 type ErrorProps ={
   name: string; // Name of the field for which the error is displayed
-  component: string | React.ComponentType<any>; // Type of HTML element or custom component to render
+  component: string;
 }
 
 function ErrorDynamic({ name, component }: ErrorProps) {
